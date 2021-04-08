@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -43,6 +45,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $lastname;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Mat::class, mappedBy="user")
+     */
+    private $mats;
+
+    public function __construct()
+    {
+        $this->mats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -145,6 +157,36 @@ class User implements UserInterface
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mat[]
+     */
+    public function getMats(): Collection
+    {
+        return $this->mats;
+    }
+
+    public function addMat(Mat $mat): self
+    {
+        if (!$this->mats->contains($mat)) {
+            $this->mats[] = $mat;
+            $mat->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMat(Mat $mat): self
+    {
+        if ($this->mats->removeElement($mat)) {
+            // set the owning side to null (unless already changed)
+            if ($mat->getUser() === $this) {
+                $mat->setUser(null);
+            }
+        }
 
         return $this;
     }
