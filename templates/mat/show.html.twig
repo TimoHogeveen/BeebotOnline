@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mat{% endblock %}
+
+{% block body %}
+    <h1>Mat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mat.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ mat.name }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ mat.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('mat_index') }}">back to list</a>
+
+    <a href="{{ path('mat_edit', {'id': mat.id}) }}">edit</a>
+
+    {{ include('mat/_delete_form.html.twig') }}
+{% endblock %}
