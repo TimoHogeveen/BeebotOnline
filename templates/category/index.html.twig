@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Lijst van Categorieën{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+    <h1>Lijst van Categorieën</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Uniek ID</th>
+                <th>Naam Categorië</th>
+                <th>Acties</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,18 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('category_show', {'id': category.id}) }}">Weergeven</a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}">Bewerken</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Geen resultaten gevonden.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('category_new') }}">Create new</a>
+    <a href="{{ path('category_new') }}">Nieuwe categorië toevoegen</a>
+    <a href="{{ path('mat_index') }}">Naar matten lijst</a>
 {% endblock %}

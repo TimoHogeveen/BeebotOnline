@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mat index{% endblock %}
+{% block title %}Lijst van matten{% endblock %}
 
 {% block body %}
-    <h1>Mat index</h1>
+    <h1>Lijst van matten</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>actions</th>
+                <th>Uniek ID</th>
+                <th>Naam</th>
+                <th>Afbeelding bestand naam</th>
+                <th>Acties</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,18 @@
                 <td>{{ mat.name }}</td>
                 <td>{{ mat.image }}</td>
                 <td>
-                    <a href="{{ path('mat_show', {'id': mat.id}) }}">show</a>
-                    <a href="{{ path('mat_edit', {'id': mat.id}) }}">edit</a>
+                    <a href="{{ path('mat_show', {'id': mat.id}) }}">Weergeven</a>
+                    <a href="{{ path('mat_edit', {'id': mat.id}) }}">Bewerken</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Geen resultaten gevonden.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('mat_new') }}">Create new</a>
+    <a href="{{ path('mat_new') }}">Nieuwe mat toevoegen</a>
+    <a href="{{ path('category_index') }}">Naar categorieën lijst</a>
 {% endblock %}

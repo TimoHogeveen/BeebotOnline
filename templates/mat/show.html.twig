@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mat{% endblock %}
+{% block title %}Mat weergeven{% endblock %}
 
 {% block body %}
-    <h1>Mat</h1>
+    <h1>Mat weergeven</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <td>{{ mat.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Naam</th>
                 <td>{{ mat.name }}</td>
             </tr>
             <tr>
-                <th>Image</th>
+                <th>Afbeelding bestand naam</th>
                 <td>{{ mat.image }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('mat_index') }}">back to list</a>
+    <a href="{{ path('mat_index') }}">Terug naar matten lijst</a>
 
-    <a href="{{ path('mat_edit', {'id': mat.id}) }}">edit</a>
+    <a href="{{ path('mat_edit', {'id': mat.id}) }}">Bewerken</a>
 
     {{ include('mat/_delete_form.html.twig') }}
 {% endblock %}

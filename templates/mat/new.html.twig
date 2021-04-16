@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Mat{% endblock %}
+{% block title %}Mat toevoegen{% endblock %}
 
 {% block body %}
-    <h1>Create new Mat</h1>
+    <h1>Mat toevoegen</h1>
 
     {{ include('mat/_form.html.twig') }}
 
-    <a href="{{ path('mat_index') }}">back to list</a>
+    <a href="{{ path('mat_index') }}">Terug naar matten lijst</a>
 {% endblock %}
