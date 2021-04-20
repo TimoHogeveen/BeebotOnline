@@ -1,1 +1,4 @@
-console.log(5 + 6);
+$('.categorydropdown').on('input', function(){ 
+    console.log($(this).val());
+    var dropdownval = $(this).val();
+})

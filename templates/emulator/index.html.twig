@@ -3,10 +3,6 @@
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="/css/emulator.css">
 {% endblock %}
-{% block javascripts %}
- <script type="text/javascript" src="/js/main.js"></script>             
-{% endblock %}
-
 {% block title %}Bee-Bot Online{% endblock %}
 
 {% block body %}
@@ -18,9 +14,9 @@
 <div class="sidenav">
 <form action="">
   <label for="category">Kies een categorie:</label>
-  <select name="category" id="category">
+  <select class="categorydropdown" name="category" id="category">
     {% for category in categories  %}
-         <option value="{{ category }}">{{ category }}</option>
+         <option value="{{ category.id }}">{{ category }}</option>
     {% endfor %}
 
   </select>
@@ -51,4 +47,7 @@
 <div class="example-wrapper">
     <h1>Welkom bij Bee-Bot Online!</h1>
 </div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript" src="/js/main.js"></script>             
 {% endblock %}
+
