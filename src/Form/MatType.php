@@ -39,7 +39,6 @@ class MatType extends AbstractType
                 ],
             ])
             ->add('category')
-            ->add('user')
         ;
     }
 

@@ -39,7 +39,8 @@ class MatController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-
+            $user = $this->getUser();
+            $mat->setUser($user);
 
 
         /** @var UploadedFile $imageFile */
