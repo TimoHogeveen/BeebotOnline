@@ -11,6 +11,10 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+{# {% if matten %}
+  {{ matten }}
+{% endif %} #}
+
 <div class="sidenav">
 <form action="">
   <label for="category">Kies een categorie:</label>
@@ -22,7 +26,7 @@
   </select>
 
   <label for="mat">Kies een mat:</label>
-  <select name="mat" id="mat">
+  <select class="mattendropdown" name="mat" id="mat">
     {% for mat in mats  %}
          <option value="{{ mat.name }}">{{ mat.name }}</option>
     {% endfor %}
