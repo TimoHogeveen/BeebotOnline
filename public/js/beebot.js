@@ -6,6 +6,7 @@ var botimg, dragimg = new Image();
 var mats;
 var currentMat = null;
 var currentIndex = -1;
+var units = 80;
 
 function setup() {
     botimg = document.getElementById("botimg");
@@ -31,21 +32,22 @@ function setup() {
 
     enable_buttons(true);
     if (!mats)
-        loadMatsJson();
+        // loadMatsJson();
+        load_mats();
     else
         load_mats();
 }
 
-function loadMatsJson() {
-    loadFile("mats/mats_list.json", function(text) {
-        if (text) {
-            mats = JSON.parse(text);
-            load_mats();
-        }
-        else
-            alert ("Cannot load the mats list!");
-    });
-}
+// function loadMatsJson() {
+//     loadFile("mats/mats_list.json", function(text) {
+//         if (text) {
+//             mats = JSON.parse(text);
+//             load_mats();
+//         }
+//         else
+//             alert ("Cannot load the mats list!");
+//     });
+// }
 
 function loadInfo() {
     if (!currentMat || location.protocol === "file:")
@@ -95,94 +97,96 @@ function loadFile(url, cb) {
 // starting cell if given via query parameter
 var start = { x: 0, y: 0, angle: -1 };
 
-function load_mats() {
-	var first = -1;
-    var mat = "", single = false;
-    let search = new URLSearchParams(location.search);
-    if (search.has("start")) {
-        let arr = search.get("start").split(",");
-        if (arr.length > 0) {
-            start.x = +arr[0].trim() || 0;
-            if (start.x < 1)
-                start.x = 0;
-        }
-        if (arr.length > 1) {
-            start.y = +arr[1].trim() || 0;
-            if (start.y < 1)
-                start.y = 0;
-        }
-        if (arr.length > 2) {
-            start.angle = arr[2].trim() || -1;
-            if (start.angle >= 0)
-                start.angle = Math.round(start.angle / 90) * 90;
-        }
-    }
 
-    for(let pair of search.entries()) {
-        let [key, value] = pair;
-        if (!value) {
-            // assume a mat
-            mat = decodeURIComponent(key);
-            single = mat.endsWith("1");
-            if (single)
-                mat = mat.slice(0, -1);
-            first = mats.findIndex(function(obj) { return obj.sku === mat });
-            if (first < 0) {
-                document.getElementById("pagename").innerText = mat;
-                document.getElementById("container").style.display = "none";
-                document.getElementById("help").style.display = "none";
-                document.getElementById("notfound").style.display = "block";
-                return;
-            }
-            if (single) {
-                mats = [ mats[first] ];
-                first = -1;
-                select = null;
-            }
-            else
-                start = { x: 0, y: 0, angle: -1 };     // start coords only valid in single mat mode
-            break;
-        }
-    }
+//BeeBot start hier
+function load_mats() {
+	// var first = -1;
+    // var mat = "", single = false;
+    // let search = new URLSearchParams(location.search);
+    // if (search.has("start")) {
+    //     let arr = search.get("start").split(",");
+    //     if (arr.length > 0) {
+    //         start.x = +arr[0].trim() || 0;
+    //         if (start.x < 1)
+    //             start.x = 0;
+    //     }
+    //     if (arr.length > 1) {
+    //         start.y = +arr[1].trim() || 0;
+    //         if (start.y < 1)
+    //             start.y = 0;
+    //     }
+    //     if (arr.length > 2) {
+    //         start.angle = arr[2].trim() || -1;
+    //         if (start.angle >= 0)
+    //             start.angle = Math.round(start.angle / 90) * 90;
+    //     }
+    // }
+
+    // for(let pair of search.entries()) {
+    //     let [key, value] = pair;
+    //     if (!value) {
+    //         // assume a mat
+    //         mat = decodeURIComponent(key);
+    //         single = mat.endsWith("1");
+    //         if (single)
+    //             mat = mat.slice(0, -1);
+    //         first = mats.findIndex(function(obj) { return obj.sku === mat });
+    //         if (first < 0) {
+    //             document.getElementById("pagename").innerText = mat;
+    //             document.getElementById("container").style.display = "none";
+    //             document.getElementById("help").style.display = "none";
+    //             document.getElementById("notfound").style.display = "block";
+    //             return;
+    //         }
+    //         if (single) {
+    //             mats = [ mats[first] ];
+    //             first = -1;
+    //             select = null;
+    //         }
+    //         else
+    //             start = { x: 0, y: 0, angle: -1 };     // start coords only valid in single mat mode
+    //         break;
+    //     }
+    // }
     var playground = document.getElementById("playground");
     var index = 0;
-    if (mats.length === 1)
-        document.getElementById("mat_selector").innerHTML = mats[0].name;
+    // if (mats.length === 1)
+    //     document.getElementById("mat_selector").innerHTML = mats[0].name;
 
-    for (var i = 0; i < mats.length; i++) {
-        var obj = mats[i];
-        obj.index = i;
-        // Find first mat w/o password
-        if (first < 0 && !obj.password)
-            first = i;
-        var html = document.createElement("img");
-        html.classList.add("box");
-        html.id = "mat" + index;
-        html.src = "mats/" + obj.image;
-        html.style.display = "none";
-        obj.img = html;
-        playground.appendChild(html);
-        if (select) {
-            html = document.createElement("option");
-            html.value = obj.sku;
-            html.innerHTML = obj.name;
-            select.appendChild(html);
-            index++;
-        }
-    }
-    if (first < 0)
-        first = 0;
-    if (select)
-        select.value = first;
-    setTimeout(function () {
-        // wait a split second so rendering is finished
-        if (select)
-            select.selectedIndex = first;
-        select_mat(first);
-        setDropHandlers(mats);
-        var style = getComputedStyle(document.getElementById("mat0"));
-        margin += parseInt(style.paddingTop || "0") + parseInt(style.borderTop || "0");
-    }, 200);
+    // for (var i = 0; i < mats.length; i++) {
+    //     var obj = mats[i];
+    //     obj.index = i;
+    //     // Find first mat w/o password
+    //     if (first < 0 && !obj.password)
+    //         first = i;
+    //     var html = document.createElement("img");
+    //     html.classList.add("box");
+    //     html.id = "mat" + index;
+    //     html.src = "mats/" + obj.image;
+    //     html.style.display = "none";
+    //     obj.img = html;
+    //     playground.appendChild(html);
+    //     if (select) {
+    //         html = document.createElement("option");
+    //         html.value = obj.sku;
+    //         html.innerHTML = obj.name;
+    //         select.appendChild(html);
+    //         index++;
+    //     }
+    // }
+    // if (first < 0)
+    //     first = 0;
+    // if (select)
+    //     select.value = first;
+    // setTimeout(function () {
+    //     // wait a split second so rendering is finished
+    //     if (select)
+    //         select.selectedIndex = first;
+    //     select_mat(first);
+    //     setDropHandlers(mats);
+    //     var style = getComputedStyle(document.getElementById("mat0"));
+    //     margin += parseInt(style.paddingTop || "0") + parseInt(style.borderTop || "0");
+    // }, 200);
 }
 
 function set_angle(deg) {
@@ -253,7 +257,7 @@ function setCurrentElement(index) {
 }
 // Sprite movement: use left and top margins to place the sprite
 function move(fd) {
-    var endVal = currentMat.units;
+    var endVal = units;
     var oldAngle = angle;
     if (!fd) {
         switch (angle) {
@@ -397,18 +401,18 @@ function select_mat(index) {
 
 function home() {
     bot.style.display = "block";
-    var w = bot.clientWidth + currentMat.units;
-    var h = bot.clientHeight + currentMat.units;
-    var cx = Math.round(currentMat.img.width / currentMat.units);
-    var cy = Math.round(currentMat.img.height / currentMat.units);
+    var w = bot.clientWidth + units;
+    var h = bot.clientHeight + units;
+    var cx = Math.round(currentMat.img.width / units);
+    var cy = Math.round(currentMat.img.height / units);
     var x = start.x;
     var y = start.y;
     var angle = start.angle;
     if (x && y) {
         if (x > cx) x = cx;
         if (y > cy) y = cy;
-        x *= currentMat.units;
-        y *= currentMat.units;
+        x *= units;
+        y *= units;
     }
     else {
         x = currentMat.start[0];
