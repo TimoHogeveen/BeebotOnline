@@ -40,6 +40,38 @@ body {
     color: #686868;
   }
 
+  .dropdowns{
+    position: absolute;
+    left: 18%;
+  }
+
+  .dropdowns label{
+    font-weight: bold;
+  }
+
+
+  .options {
+    position: absolute;
+    bottom: 10%;
+    left: 18%;
+  }
+
+/* Styling voor het commando centrum */
+
+#commands {
+	margin-top: 20px;
+	border: 2px solid gray;
+	background-color: #3352ff;
+	padding: 5px;
+	max-width: 100%;
+	min-height: 36px;
+}
+
+#commands img {
+	padding: 5px;
+}
+
+
   .main {
     margin-left: 160px; /* Same as the width of the sidenav */
     font-size: 28px; /* Increased text to enable scrolling */

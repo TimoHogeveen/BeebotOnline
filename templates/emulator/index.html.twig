@@ -12,7 +12,50 @@
 </style>
 
 <div class="sidenav">
-<form action="">
+
+{# Buttons vervangen door https://fontawesome.com/ #}
+
+<table id="buttons" style="margin-left:auto;margin-right:auto;">
+		<tbody>
+      <tr>
+				<td style="vertical-align:top; text-align:left">
+					<input id="home" type="image" class="button green" src="temp/reset.png" width="80">
+				</td>
+				<td style="vertical-align:top; text-align:center">
+					<input id="fd" type="image" class="button orange" src="temp/beebot-fd.png">
+				</td>
+				<td style="vertical-align:top; text-align:right">
+					<input id="stop_run" type="image" class="button red" src="temp/stop.png" disabled="disabled" width="80">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input id="lt" type="image" class="button orange" src="temp/beebot-lt.png">
+				</td>
+				<td>
+					<input id="go" type="image" class="button ltgreen" src="temp/beebot-go.png">
+				</td>
+				<td>
+					<input id="rt" type="image" class="button orange" src="temp/beebot-rt.png">
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align: bottom;">
+					<input id="stop" type="image" class="button blue" src="temp/beebot-stop.png">
+				</td>
+				<td>
+					<input id="bk" type="image" class="button orange" src="temp/beebot-bk.png">
+				</td>
+				<td style="vertical-align: bottom;">
+					<input id="pause" type="image" class="button blue" src="temp/beebot-pause.png">
+				</td>
+			</tr>
+		</tbody>
+  </table>
+  
+  <p id="commands"></p> 
+
+<form class="dropdowns" action="">
   <label for="category">Kies een categorie:</label>
   <select class="categorydropdown" name="category" id="category">
     {% for category in categories  %}
@@ -20,7 +63,9 @@
     {% endfor %}
 
   </select>
-
+<br>
+<br>
+<br>
   <label for="mat">Kies een mat:</label>
   <select class="mattendropdown" name="mat" id="mat">
     {% for mat in mats  %}
@@ -31,9 +76,7 @@
   <br><br>
   <input type="submit" value="Submit">
 </form>
-
-{# https://craftcms.stackexchange.com/questions/21934/how-to-use-twig-to-pull-drop-down-menu-items-for-a-front-end-form #}
-
+<div class="options">
 {% if app.user %}
     <a href="{{ path('category_index') }}">Naar categorieën lijst</a>
     <a href="{{ path('mat_index') }}">Naar matten lijst</a>
@@ -42,6 +85,7 @@
     <a href="{{ path('app_login') }}">Inloggen</a>
     <a href="{{ path('app_register') }}">Registreer</a>
  {% endif %}
+ </div>
 </div>
 
 <div class="example-wrapper">
