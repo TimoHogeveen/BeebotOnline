@@ -6,9 +6,12 @@ buttons = ["fd", "bk", "lt", "rt", "go", "stop", "pause", "home"];
 
 timerID = 0;
 
+
+
+// Als document word geladen
 document.addEventListener('DOMContentLoaded', function() 
 {
-	// do the global setup
+	// Globale setup
 	setup();
 	// button_click() handles the button clicks
 	for (var i in buttons)
@@ -16,13 +19,13 @@ document.addEventListener('DOMContentLoaded', function()
 	{
 		audio_click.play();
 		switch (this.id) {
-			case 'pause':
-			case 'fd':
-			case 'bk':
-			case 'lt':
+			case 'pause': 
+			case 'fd': //Rechtdoor
+			case 'bk': //Achteruit
+			case 'lt': //Links draai
 			case 'rt':	addCmd(this.id); break;
-			case 'go':	run(); break;
-			case 'stop': clear(); break;
+			case 'go':	run(); break; //Rechtsdraai
+			case 'stop': clear(); break; //Stop
 		}
 	});
 	

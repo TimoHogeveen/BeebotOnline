@@ -21,8 +21,8 @@ function setup() {
     audio_full = new Audio();
     audio_full.src = "/assets/audio/beebot-full.mp3";
 
-    bot = document.getElementById("bot");
-    select = document.getElementById("mats");
+    bot = document.getElementById("bot"); //Canvas
+    select = document.getElementById("mats"); 
     link = document.getElementById("link");
     grid = null;  // takes the current grid image, see select_mat()
 
