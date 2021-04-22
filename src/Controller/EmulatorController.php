@@ -29,11 +29,7 @@ class EmulatorController extends AbstractController
     public function matsid(Request $request, MatRepository $matRepository): Response
     {
         $id = $request->get('id');
-
-        //if($request->isXmlHttpRequest()){
-            $matten = $matRepository->findBy(array('category' => $id));
-  
-        // }
+        $matten = $matRepository->findBy(array('category' => $id));
         $s = "";
          foreach ($matten as $mat) {
              $s .= "<option>". $mat->getName().' </option> ';
