@@ -88,10 +88,15 @@
  </div>
 </div>
 
-<div class="example-wrapper">
-    <h1>Welkom bij Bee-Bot Online!</h1>
+<div class="right">
+<div id="playground">
+<canvas id="bot" draggable="true" style="display: block; margin-left: 223px; margin-top: 223px;" height="80" width="80"></canvas>
+<img id="botimg" src="/temp/botimg.png" style="position: absolute; left: -1000px; top: -1000px">
+</div>
 </div>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script type="text/javascript" src="/js/main.js"></script>             
+ <script type="text/javascript" src="/js/main.js"></script>      
+ <script type="text/javascript" src="/js/handlers.js"></script>          
+ <script type="text/javascript" src="/js/beebot.js"></script>                 
 {% endblock %}
 
