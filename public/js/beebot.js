@@ -28,7 +28,7 @@ function setup() {
     bot = document.getElementById("bot"); //Canvas
     select = document.getElementById("mats"); 
     link = document.getElementById("link");
-    grid = document.getElementById("playground");  // takes the current grid image, see select_mat()
+    grid = document.getElementById("playground");  // takes the current playground
 
     var style = getComputedStyle(document.getElementById("playground"));
     margin = parseInt(style.paddingTop);
@@ -40,6 +40,18 @@ function setup() {
     else
         load_mats();
 }
+
+document.getElementById('matbutton').onclick = function() {
+    var val = document.getElementById('imagename').value,
+        src = 'uploads/images/' + val +'.jpg',
+        img = document.createElement('img');
+
+    img.src = src;
+    document.body.appendChild(img);
+}
+
+
+
 
 // function loadMatsJson() {
 //     loadFile("mats/mats_list.json", function(text) {
