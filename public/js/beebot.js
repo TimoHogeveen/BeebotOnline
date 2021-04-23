@@ -75,7 +75,7 @@ function loadInfo() {
         });   
     }
 }
-
+//????
 function loadFile(url, cb) {
     var xmlhttp = new XMLHttpRequest();
  
@@ -191,18 +191,18 @@ function load_mats() {
 
 function set_angle(deg) {
     angle = deg;
-    var c = document.getElementById("bot");
-    var w = Math.max(botimg.width, botimg.height);
-    c.width = c.height = w;
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, w, w);
+    var c = document.getElementById("bot"); //De Canvas
+    var w = Math.max(botimg.width, botimg.height); //Dit is dus het hoogste variable. Dus de hoogte of breedte van de bot afbeelding
+    c.width = c.height = w; //Dit maakt de canvas grootte/breedte hetzelfde als de bot afbeelding
+    var ctx = c.getContext("2d"); //Verteld het variable dat deze afbeelding(canvas) twee dimensies heeft
+    ctx.clearRect(0, 0, w, w); //Deze code maakt de canvas schoon (leeg)
     ctx.translate(w/2, w/2);
     ctx.rotate(angle * Math.PI / 180);
     ctx.translate(-w/2, -w/2);
     ctx.drawImage(botimg, 0, 0);
     dragimg.src = c.toDataURL();
 }
-
+// Functie waar de instructies worden toegevoegd aan het commando scherm.
 function addCmd(what) {
     var span = document.getElementById("commands");
     if (span.getElementsByTagName("img").length >= 40) {
@@ -210,10 +210,10 @@ function addCmd(what) {
         return;
     }
     var img = document.createElement("img");
-    img.src = "/assets/img/go-" + what + ".png";
+    img.src = "/temp/go-" + what + ".png";
     span.appendChild(img);
 }
-
+//Functie om het commando scherm leeg te maken
 function clear() {
     var span = document.getElementById("commands");
     span.innerHTML = "";
@@ -223,19 +223,20 @@ var curIndex = -1;
 var curElement = null;
 var elements = null;
 
+//Functie voor de GO knop, zorgt ervoor dat de knoppen ook niet meer te gebruiken zijn
 function run() {
     curIndex = 0;
     var span = document.getElementById("commands");
     elements = span.getElementsByTagName("img");
-    enable_buttons(false);
-    nextStep();
+    enable_buttons(false); //Hier kan je niet meer instructies invoeren
+    nextStep(); //Functie voor de volgende stappen
 }
 
 // Play the next element on the list of steps
 function nextStep() {
     setCurrentElement(curIndex++);
     if (!curElement)
-        stop();
+        stop(); //Einde, geen commando meer
     else {
         var file = curElement.attributes.src.value.split("/").pop();
           switch (file) {
@@ -247,13 +248,13 @@ function nextStep() {
         }
     }
 }
-
+//Functie voor de huidige commando in het commando menu
 function setCurrentElement(index) {
     if (curElement)
         curElement.style.border = "none";
     curElement = (index >= 0 && elements && index < elements.length) ? elements[index] : null;
     if (curElement)
-        curElement.style.border = "2px solid black";
+        curElement.style.border = "2px solid black"; //Geeft de commando een mooie border zodat je weet wie er aan de buurt is
 }
 // Sprite movement: use left and top margins to place the sprite
 function move(fd) {
@@ -329,7 +330,7 @@ function rotate(right) {
     }, 100);
     audio_motor.play();
 }
-
+//Functie voor de pause knop, zorgt dat de Beebot dus even stopt
 function pause() {
     timerID = setTimeout(function () {
         clearTimeout(timerID);
@@ -338,17 +339,17 @@ function pause() {
         nextStep();
     }, 2000);
 }
-
+//Stop knop, hiermee stopt de BeeBot gelijk
 function stop() {
     if (timerID)
         clearInterval(timerID);
     timerID = 0;
     audio_motor.pause();
     audio_stop.play();
-    enable_buttons(true);
+    enable_buttons(true); //Knoppen zijn weer te gebruiken
     setCurrentElement(-1);
 }
-
+//Zorgt ervoor dat de knoppen weer te gebruiken zijn, gaat elke knop dus bijlangs
 function enable_buttons(enabled) {
     for (var i in buttons) {
         var b = document.getElementById(buttons[i]);
@@ -398,7 +399,7 @@ function select_mat(index) {
         }
     }
 }
-
+//Functie om de Beebot te resetten en weer naar zijn startpositie te laten gaan.
 function home() {
     bot.style.display = "block";
     var w = bot.clientWidth + units;
