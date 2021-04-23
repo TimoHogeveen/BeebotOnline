@@ -1,5 +1,5 @@
 var audio_click, audio_stop, audio_motor, audio_full;
-var bot, select, link, grid, angle, margin;
+var bot, select, link, grid, margin;
 
 var botimg, dragimg = new Image();
 
@@ -7,6 +7,9 @@ var mats;
 var currentMat = null;
 var currentIndex = -1;
 var units = 80;
+var angle = 0;
+// starting cell if given via query parameter
+var start = { x: 0, y: 0, angle: -1 };
 
 function setup() {
     botimg = document.getElementById("botimg");
@@ -25,7 +28,7 @@ function setup() {
     bot = document.getElementById("bot"); //Canvas
     select = document.getElementById("mats"); 
     link = document.getElementById("link");
-    grid = null;  // takes the current grid image, see select_mat()
+    grid = document.getElementById("playground");  // takes the current grid image, see select_mat()
 
     var style = getComputedStyle(document.getElementById("playground"));
     margin = parseInt(style.paddingTop);
@@ -93,10 +96,6 @@ function loadFile(url, cb) {
 
 // the variable "mats" has been loaded from mats/mats_list.json
 // mats = {};
-
-// starting cell if given via query parameter
-var start = { x: 0, y: 0, angle: -1 };
-
 
 //BeeBot start hier
 function load_mats() {
@@ -360,35 +359,35 @@ function enable_buttons(enabled) {
 }
 
 function select_mat(index) {
-    currentMat = mats[index];
-    if (grid)
-        grid.style.display = "none";
-    if (currentMat.password) {
-        var pass = prompt("Please enter the secret password for this mat:");
-        if (pass !== currentMat.password) {
-            alert("Sorry, you are not allowed to access this mat!");
-            if (select)
-                select.selectedIndex = currentIndex;
-            bot.style.display = "none";
-            if (currentIndex < 0)
-                return;
-        }
-    }
+    // currentMat = mats[index];
+    // if (grid)
+    //     grid.style.display = "none";
+    // if (currentMat.password) {
+    //     var pass = prompt("Please enter the secret password for this mat:");
+    //     if (pass !== currentMat.password) {
+    //         alert("Sorry, you are not allowed to access this mat!");
+    //         if (select)
+    //             select.selectedIndex = currentIndex;
+    //         bot.style.display = "none";
+    //         if (currentIndex < 0)
+    //             return;
+    //     }
+    // }
     // need only to enter the password once
-    currentMat.password = "";
-    grid = document.getElementById("mat" + index);
-    grid.style.display = "block";
-    // Show or hide the link to the product page
-    if (currentMat.url) {
-        document.getElementById("link-container").style.display = "block";
-        link.setAttribute('href', "https://www.terrapinlogo.com" + currentMat.url);
-    }
-    else
-        document.getElementById("link-container").style.display = "none";
+    // currentMat.password = "";
+    // grid = document.getElementById("mat" + index);
+    // grid.style.display = "block";
+    // // Show or hide the link to the product page
+    // if (currentMat.url) {
+    //     document.getElementById("link-container").style.display = "block";
+    //     link.setAttribute('href', "https://www.terrapinlogo.com" + currentMat.url);
+    // }
+    // else
+    //     document.getElementById("link-container").style.display = "none";
 
-    currentIndex = index;
+    // currentIndex = index;
     clear();
-    loadInfo();
+    // loadInfo();
     setTimeout(home, 100);
     var c = document.getElementById("container");
     if (typeof chrome != "undefined") {
@@ -404,8 +403,8 @@ function home() {
     bot.style.display = "block";
     var w = bot.clientWidth + units;
     var h = bot.clientHeight + units;
-    var cx = Math.round(currentMat.img.width / units);
-    var cy = Math.round(currentMat.img.height / units);
+    var cx = Math.round(playground.width / units); //Grootte van playground
+    var cy = Math.round(playground.height / units);
     var x = start.x;
     var y = start.y;
     var angle = start.angle;
@@ -415,12 +414,12 @@ function home() {
         x *= units;
         y *= units;
     }
-    else {
-        x = currentMat.start[0];
-        y = currentMat.start[1];
-    }
-    if (angle < 0)
-        angle = currentMat.angle || 0;
+    // else {
+    //     x = currentMat.start[0];
+    //     y = currentMat.start[1];
+    // }
+    // if (angle < 0)
+    //     angle = currentMat.angle || 0;
     bot.style.marginLeft = (x - w / 2 + margin) + "px";
     bot.style.marginTop = (y - h / 2 + margin) + "px";
 
