@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+// use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+// use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @Route("/mat")
@@ -67,11 +69,6 @@ class MatController extends AbstractController
             // updates the 'imageFilename' property to store the PDF file name
             // instead of its contents
             $mat->setimage($newFilename);
-
-
-
-
-
         }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($mat);
@@ -123,6 +120,12 @@ class MatController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$mat->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            $file = $this->getParameter("images_directory") . '/' . $mat->getImage(); 
+            if ($file) {
+               unlink($file); //Hier word de mat lokaal verwijderd
+           }
+
+
             $entityManager->remove($mat);
             $entityManager->flush();
         }

@@ -34,13 +34,14 @@ function setup() {
     margin = parseInt(style.paddingTop);
 
     enable_buttons(true);
-    if (!mats)
-        // loadMatsJson();
-        load_mats();
-    else
-        load_mats();
+    // if (!mats)
+    //     // loadMatsJson();
+    //     load_mats();
+    // else
+    //     load_mats();
 }
 
+//TODO, zorgen dat afbeeldingen worden ingeladen in canvas of zoiets
 document.getElementById('matbutton').onclick = function() {
     var val = document.getElementById('imagename').value,
         src = 'uploads/images/' + val +'.jpg',
@@ -64,47 +65,47 @@ document.getElementById('matbutton').onclick = function() {
 //     });
 // }
 
-function loadInfo() {
-    if (!currentMat || location.protocol === "file:")
-        return;
-    var div = document.getElementById("right-info");
-    div.innerHTML = "";
-    if (currentMat.html)
-        div.innerHTML = currentMat.html;
-    else {
-        function getBody(text) {
-            let s = /<body.*?>([\s\S]*)<\/body>/m.exec(text);
-            return s ? s[1] : "";
-        }
-        var filename = currentMat.image.split(".");
-        filename[filename.length-1] = "html";
-        loadFile("mats/" + filename.join("."), function(text) {
-            if (text)
-                div.innerHTML = currentMat.html = getBody(text);
-            else
-                loadFile("info.html", function(text) {
-                    if (text)
-                        div.innerHTML = currentMat.html = getBody(text);
-                }
-            );
-        });   
-    }
-}
+// function loadInfo() {
+//     if (!currentMat || location.protocol === "file:")
+//         return;
+//     var div = document.getElementById("right-info");
+//     div.innerHTML = "";
+//     if (currentMat.html)
+//         div.innerHTML = currentMat.html;
+//     else {
+//         function getBody(text) {
+//             let s = /<body.*?>([\s\S]*)<\/body>/m.exec(text);
+//             return s ? s[1] : "";
+//         }
+//         var filename = currentMat.image.split(".");
+//         filename[filename.length-1] = "html";
+//         loadFile("mats/" + filename.join("."), function(text) {
+//             if (text)
+//                 div.innerHTML = currentMat.html = getBody(text);
+//             else
+//                 loadFile("info.html", function(text) {
+//                     if (text)
+//                         div.innerHTML = currentMat.html = getBody(text);
+//                 }
+//             );
+//         });   
+//     }
+// }
 //????
-function loadFile(url, cb) {
-    var xmlhttp = new XMLHttpRequest();
+// function loadFile(url, cb) {
+//     var xmlhttp = new XMLHttpRequest();
  
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState != 4)
-            return;
-        if (this.status == 200)
-            cb(this.responseText);
-        else
-            cb();
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
- }
+//     xmlhttp.onreadystatechange = function() {
+//         if (this.readyState != 4)
+//             return;
+//         if (this.status == 200)
+//             cb(this.responseText);
+//         else
+//             cb();
+//     };
+//     xmlhttp.open("GET", url, true);
+//     xmlhttp.send();
+//  }
 
 // the variable "mats" has been loaded from mats/mats_list.json
 // mats = {};
@@ -159,8 +160,8 @@ function load_mats() {
     //         break;
     //     }
     // }
-    var playground = document.getElementById("playground");
-    var index = 0;
+    //var playground = document.getElementById("playground");
+    //var index = 0;
     // if (mats.length === 1)
     //     document.getElementById("mat_selector").innerHTML = mats[0].name;
 
@@ -210,8 +211,8 @@ function set_angle(deg) {
     ctx.translate(w/2, w/2);
     ctx.rotate(angle * Math.PI / 180);
     ctx.translate(-w/2, -w/2);
-    ctx.drawImage(botimg, 0, 0);
-    dragimg.src = c.toDataURL();
+    ctx.drawImage(botimg, 0, 0); //De afbeelding word in de canvas geladen
+    dragimg.src = c.toDataURL(); //???
 }
 // Functie waar de instructies worden toegevoegd aan het commando scherm.
 function addCmd(what) {
@@ -269,9 +270,10 @@ function setCurrentElement(index) {
 }
 // Sprite movement: use left and top margins to place the sprite
 function move(fd) {
+
     var endVal = units;
     var oldAngle = angle;
-    if (!fd) {
+    if (!fd) { //Als niet rechtdoor
         switch (angle) {
             case 0: angle = 180; break;
             case 90: angle = 270; break;
@@ -281,7 +283,7 @@ function move(fd) {
     }
     audio_motor.load();
     timerID = setInterval(function () {
-        var x = bot.offsetLeft;
+        var x = bot.offsetLeft; //Waar de bot dus op begin staat
         var y = bot.offsetTop;
         var diff = 5;
         switch (angle) {
@@ -292,14 +294,14 @@ function move(fd) {
         }
         if (x < 0) x = 0;
         if (y < 0) y = 0;
-        if (x > (grid.clientWidth + 3 * margin / 2))
+        if (x > (grid.clientWidth + 3 * margin / 2)) //Niet buiten het speelveeld
             x = grid.clientWidth + 3 * margin / 2;
         if (y > (grid.clientHeight + 3 * margin / 2))
             y = grid.clientHeight + 3 * margin / 2;
         bot.style.marginLeft = x + "px";
         bot.style.marginTop = y + "px";
         endVal -= diff;
-        if (endVal <= 0) {
+        if (endVal <= 0) { //Hij telt af wanneer de bot mag stoppen
             clearInterval(timerID);
             timerID = 0;
             angle = oldAngle;
@@ -308,7 +310,7 @@ function move(fd) {
             nextStep();
         }
     }, 100);
-    audio_motor.play();
+    audio_motor.play();  
 }
 
 function rotate(right) {
