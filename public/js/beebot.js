@@ -16,14 +16,14 @@ function setup() {
     dragDataType = 'text/plain';
     timerID = 0;
 
-    audio_click = new Audio();
-    audio_click.src = "/assets/audio/beebot-button.mp3";
-    audio_stop = new Audio();
-    audio_stop.src = "/assets/audio/beebot-stop.mp3";
-    audio_motor = new Audio();
-    audio_motor.src = "/assets/audio/beebot-motor.mp3";
-    audio_full = new Audio();
-    audio_full.src = "/assets/audio/beebot-full.mp3";
+    // audio_click = new Audio();
+    // audio_click.src = "/assets/audio/beebot-button.mp3";
+    // audio_stop = new Audio();
+    // audio_stop.src = "/assets/audio/beebot-stop.mp3";
+    // audio_motor = new Audio();
+    // audio_motor.src = "/assets/audio/beebot-motor.mp3";
+    // audio_full = new Audio();
+    // audio_full.src = "/assets/audio/beebot-full.mp3";
 
     bot = document.getElementById("bot"); //Canvas
     select = document.getElementById("mats"); 
@@ -218,7 +218,7 @@ function set_angle(deg) {
 function addCmd(what) {
     var span = document.getElementById("commands");
     if (span.getElementsByTagName("img").length >= 40) {
-        audio_full.play();
+        //audio_full.play();
         return;
     }
     var img = document.createElement("img");
@@ -281,36 +281,42 @@ function move(fd) {
             case 270: angle = 90; break;
         }
     }
-    audio_motor.load();
+    //audio_motor.load();
     timerID = setInterval(function () {
         var x = bot.offsetLeft; //Waar de bot dus op begin staat
-        var y = bot.offsetTop;
+        var y = bot.style.marginTop.replace('px', ''); //Pakt de huidige marginTop, en haalt de pixels erbij weg. Replace niet nodig!!
+        if (! y) y = 0; //Als de margintop leeg is, maak hem dan 0
+        y = parseInt(y,10); //Zeker weten dat Y een cijfer is.
         var diff = 5;
+        
         switch (angle) {
-            case 0: y -= diff; break;
-            case 90: x += diff; break;
-            case 180: y += diff; break;
-            case 270: x -= diff; break;
+            case 0: y -= diff; break; //Naar boven
+            case 90: x += diff; break; //Naar rechts
+            case 180: y += diff; break; //Naar onder
+            case 270: x -= diff; break; //Naar links
         }
+        console.log((new Date()).getMilliseconds(), "hoek:",angle, "y:", y);
+        //console.log(x,y);
         if (x < 0) x = 0;
-        if (y < 0) y = 0;
+        if (y < 0) y = 0; //Als hij boven het scherm is...
         if (x > (grid.clientWidth + 3 * margin / 2)) //Niet buiten het speelveeld
             x = grid.clientWidth + 3 * margin / 2;
-        if (y > (grid.clientHeight + 3 * margin / 2))
+        if (y > (grid.clientHeight + 3 * margin / 2)) //Niet buiten de playground aan onderkant
             y = grid.clientHeight + 3 * margin / 2;
         bot.style.marginLeft = x + "px";
         bot.style.marginTop = y + "px";
+        console.log("Margin top", bot.style.marginTop);
         endVal -= diff;
         if (endVal <= 0) { //Hij telt af wanneer de bot mag stoppen
             clearInterval(timerID);
             timerID = 0;
             angle = oldAngle;
-            audio_motor.pause();
-            audio_click.play();
+            //audio_motor.pause();
+            //audio_click.play();
             nextStep();
         }
     }, 100);
-    audio_motor.play();  
+    //audio_motor.play();  
 }
 
 function rotate(right) {
@@ -319,7 +325,7 @@ function rotate(right) {
         endVal += 360;
     if (endVal >= 360)
         endVal -= 360;
-    audio_motor.load();
+    //audio_motor.load();
     timerID = setInterval(function () {
         var deg = angle;
         if (right)
@@ -336,19 +342,19 @@ function rotate(right) {
         if (deg == endVal) {
             clearInterval(timerID);
             timerID = 0;
-            audio_motor.pause();
-            audio_click.play();
+            //audio_motor.pause();
+            //audio_click.play();
             nextStep();
         }
     }, 100);
-    audio_motor.play();
+    //audio_motor.play();
 }
 //Functie voor de pause knop, zorgt dat de Beebot dus even stopt
 function pause() {
     timerID = setTimeout(function () {
         clearTimeout(timerID);
         timerID = 0;
-        audio_click.play();
+        //audio_click.play();
         nextStep();
     }, 2000);
 }
@@ -357,8 +363,8 @@ function stop() {
     if (timerID)
         clearInterval(timerID);
     timerID = 0;
-    audio_motor.pause();
-    audio_stop.play();
+    //audio_motor.pause();
+    //audio_stop.play();
     enable_buttons(true); //Knoppen zijn weer te gebruiken
     setCurrentElement(-1);
 }

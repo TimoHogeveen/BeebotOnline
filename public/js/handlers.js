@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function()
 	for (var i in buttons)
 		document.getElementById(buttons[i]).addEventListener("click", function(evt)
 	{
-		audio_click.play();
+		//audio_click.play();
 		switch (this.id) {
 			case 'pause': 
 			case 'fd': //Rechtdoor
