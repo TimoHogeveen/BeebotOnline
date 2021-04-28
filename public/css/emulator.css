@@ -2,12 +2,23 @@ body {
     background-color: white;
 }
 
+/* Menu rechterkant */
+
 .right {
-  position: relative;
+  position: fixed;
+  /* TODO: FIX BEEBOT  */
   height: 100vh;
   left: 20%;
   width: 80%;
 }
+
+#playground {
+  height: 100%;
+  width: 80%;
+  position: fixed;
+  /* Dit staat er zo in om te zorgen dat de Beebot de playground niet meeneemt */
+}
+
 
 /* Code voor het menu aan de linkerkant */
 
@@ -64,13 +75,6 @@ body {
 
 #commands img {
 	padding: 5px;
-}
-
-
-#playground {
-  height: 100%;
-  position: relative;
-  /* padding: 10px; */
 }
 
 /* styling voor bot */

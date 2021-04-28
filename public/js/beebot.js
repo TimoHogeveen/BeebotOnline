@@ -32,6 +32,7 @@ function setup() {
 
     var style = getComputedStyle(document.getElementById("playground"));
     margin = parseInt(style.paddingTop);
+    set_angle(angle);
 
     enable_buttons(true);
     // if (!mats)
@@ -419,6 +420,7 @@ function select_mat(index) {
     }
 }
 //Functie om de Beebot te resetten en weer naar zijn startpositie te laten gaan.
+//TODO: Houden we dit erin??? Werkt op moment NIET
 function home() {
     bot.style.display = "block";
     var w = bot.clientWidth + units;
