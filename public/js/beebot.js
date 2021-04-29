@@ -44,8 +44,8 @@ function setup() {
 
 //TODO, zorgen dat hij de juiste gekozen afbeelding kiest
 document.getElementById('matbutton').onclick = function() {
-    var val = document.getElementById('mat').value,
-        src = 'uploads/images/' + "mat-1-boek-brombeer-6089258213333" +'.jpg';
+    var val = document.getElementById('mat').value;
+    src = 'uploads/images/' + val;
 
     currentmat.src = src;
     //currentmat.style.backgroundImage = "src"
