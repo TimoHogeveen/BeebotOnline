@@ -8,8 +8,9 @@ method: 'GET',
 dataType: 'html',
 
 
-}).done(function(response){
+}).done(function(response, responseURL){
     console.log(response);
+    console.log(responseURL)
     $('.mattendropdown').html(response);
 })
 

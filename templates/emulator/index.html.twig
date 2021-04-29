@@ -69,10 +69,6 @@
 <br>
   <label for="mat">Kies een mat:</label>
   <select class="mattendropdown" name="mat" id="mat">
-    {% for mat in mats  %}
-
-    {% endfor %}
-
   </select>
   <br><br>
   <input type="button" id="matbutton" value="Kies Mat" />
@@ -92,6 +88,7 @@
 <div class="right">
 <div id="playground">
 <canvas id="bot" draggable="true" style="display: block;" height="80" width="80"></canvas>
+<img id="currentmat">
 <img id="botimg" src="/temp/botimg.png" style="position: absolute; left: -1000px; top: -1000px">
 </div>
 </div>

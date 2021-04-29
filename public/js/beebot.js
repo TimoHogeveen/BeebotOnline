@@ -42,14 +42,15 @@ function setup() {
     //     load_mats();
 }
 
-//TODO, zorgen dat afbeeldingen worden ingeladen in canvas of zoiets
+//TODO, zorgen dat hij de juiste gekozen afbeelding kiest
 document.getElementById('matbutton').onclick = function() {
-    var val = document.getElementById('imagename').value,
-        src = 'uploads/images/' + val +'.jpg',
-        img = document.createElement('img');
+    var val = document.getElementById('mat').value,
+        src = 'uploads/images/' + "mat-1-boek-brombeer-6089258213333" +'.jpg';
 
-    img.src = src;
-    document.body.appendChild(img);
+    currentmat.src = src;
+    //currentmat.style.backgroundImage = "src"
+    //document.getElementById(playground).appendChild(img);
+    //document.body.appendChild(img);
 }
 
 

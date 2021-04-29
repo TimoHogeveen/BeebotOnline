@@ -19,6 +19,15 @@ body {
   /* Dit staat er zo in om te zorgen dat de Beebot de playground niet meeneemt */
 }
 
+/* Img waar de gekozen mat word ingeladen, position absolute zodat hij altijd linksbovenin staat. Z-index om te zorgend dat je de bot boven de mat hebt */
+
+#currentmat {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  z-index: -1;
+}
+
 
 /* Code voor het menu aan de linkerkant */
 
