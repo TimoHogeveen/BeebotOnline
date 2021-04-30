@@ -6,7 +6,7 @@ var botimg, dragimg = new Image();
 var mats;
 var currentMat = null;
 var currentIndex = -1;
-var units = 80;
+var units = 100; //Verander dit nummer om de afstand die de bot aflegt te veranderen
 var angle = 0;
 // starting cell if given via query parameter
 var start = { x: 0, y: 0, angle: -1 };

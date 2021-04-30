@@ -6,11 +6,6 @@
 {% block title %}Bee-Bot Online{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
 <div class="sidenav">
 
 {# Buttons vervangen door https://fontawesome.com/ #}
@@ -88,7 +83,7 @@
 <div class="right">
 <div id="playground">
 <canvas id="bot" draggable="true" style="display: block;" height="80" width="80"></canvas>
-<img id="currentmat">
+<img id="currentmat" draggable="false">
 <img id="botimg" src="/temp/botimg.png" style="position: absolute; left: -1000px; top: -1000px">
 </div>
 </div>

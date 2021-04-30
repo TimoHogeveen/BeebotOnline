@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function()
 	
 });
 
-function setDropHandlers(mats) {
+function setDropHandlers() {
 	// drag and drop handlers
 	document.getElementById("bot").addEventListener("dragstart", function(evt)
 	{
