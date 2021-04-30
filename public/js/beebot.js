@@ -10,6 +10,7 @@ var units = 80;
 var angle = 0;
 // starting cell if given via query parameter
 var start = { x: 0, y: 0, angle: -1 };
+var grid;
 
 function setup() {
     botimg = document.getElementById("botimg");
@@ -33,7 +34,7 @@ function setup() {
     var style = getComputedStyle(document.getElementById("playground"));
     margin = parseInt(style.paddingTop);
     set_angle(angle);
-
+    setDropHandlers(mats) //Dit zorgt ervoor dat de playground drag en droppable word
     enable_buttons(true);
     // if (!mats)
     //     // loadMatsJson();

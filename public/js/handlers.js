@@ -35,14 +35,15 @@ document.addEventListener('DOMContentLoaded', function()
 		set_angle(currentMat ? currentMat.angle : 0);
 	});
 */	
+
 	// The selection handler for the mats DDL (if present)
-	(function() {
-		if (select)
-			select.addEventListener("change", function()
-			{		
-				select_mat(this.selectedIndex);
-			});
-	})();
+	// (function() {
+	// 	if (select)
+	// 		select.addEventListener("change", function()
+	// 		{		
+	// 			select_mat(this.selectedIndex);
+	// 		});
+	// })();
 
 	// The Home handler
 	document.getElementById("home").addEventListener("click", function()
@@ -73,6 +74,7 @@ function setDropHandlers(mats) {
 		var bot = this;
 		setTimeout(function() {
 			bot.style.visibility = "hidden";
+			console.log("Ik ben onzichtbaar");
 		}, 1);
 		return false;
 	});
@@ -81,22 +83,24 @@ function setDropHandlers(mats) {
 		evt.preventDefault();
 		setTimeout(function() {
 			bot.style.visibility = "";
+			console.log("Ik ben zichtbaar");
 		}, 1);
 	});
 
-	for (var i in mats) {
-		var mat = document.getElementById("mat"+i);
-		mat.addEventListener("dragover", function(evt)
+
+		//var playfield = document.getElementById(playground);
+		grid.addEventListener("dragover", function(evt)
 		{
-			evt.preventDefault();
+			evt.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+			console.log("Je sleept boven de playground!")
 		});
 		
-		mat.addEventListener("drop", function(evt)
+		grid.addEventListener("drop", function(evt)
 		{
-			evt.preventDefault();
+			evt.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
 			var pos = JSON.parse(evt.dataTransfer.getData("text"));
 			bot.style.marginLeft = (evt.layerX - pos.x) + "px";
 			bot.style.marginTop = (evt.layerY - pos.y) + "px";
 		});
-	}
+	
 }
