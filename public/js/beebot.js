@@ -422,7 +422,6 @@ function select_mat(index) {
     }
 }
 //Functie om de Beebot te resetten en weer naar zijn startpositie te laten gaan.
-//TODO: Houden we dit erin??? Werkt op moment NIET
 function home() {
     bot.style.display = "block";
     //var w = bot.clientWidth + units;
