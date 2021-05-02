@@ -9,8 +9,8 @@ var currentIndex = -1;
 var units = 100; //Verander dit nummer om de afstand die de bot aflegt te veranderen
 var angle = 0;
 // starting cell if given via query parameter
-var start = { x: 0, y: 0, angle: -1 };
-var grid;
+var start = { x: 0, y: 0, angle: 0 }; //Deze word alleen gebruikt in de reset functie
+var grid; //Variable voor de playground
 
 function setup() {
     botimg = document.getElementById("botimg");
@@ -425,27 +425,29 @@ function select_mat(index) {
 //TODO: Houden we dit erin??? Werkt op moment NIET
 function home() {
     bot.style.display = "block";
-    var w = bot.clientWidth + units;
-    var h = bot.clientHeight + units;
-    var cx = Math.round(playground.width / units); //Grootte van playground
-    var cy = Math.round(playground.height / units);
+    //var w = bot.clientWidth + units;
+    //var h = bot.clientHeight + units;
+    //var cx = Math.round(playground.width / units); //Grootte van playground
+    //var cy = Math.round(playground.height / units);
     var x = start.x;
     var y = start.y;
     var angle = start.angle;
-    if (x && y) {
-        if (x > cx) x = cx;
-        if (y > cy) y = cy;
-        x *= units;
-        y *= units;
-    }
+    // if (x && y) {
+    //     if (x > cx) x = cx;
+    //     if (y > cy) y = cy;
+    //     x *= units;
+    //     y *= units;
+    // }
     // else {
     //     x = currentMat.start[0];
     //     y = currentMat.start[1];
     // }
     // if (angle < 0)
     //     angle = currentMat.angle || 0;
-    bot.style.marginLeft = (x - w / 2 + margin) + "px";
-    bot.style.marginTop = (y - h / 2 + margin) + "px";
+    // bot.style.marginLeft = (x - w / 2 + margin) + "px";
+    // bot.style.marginTop = (y - h / 2 + margin) + "px";
+    bot.style.marginLeft = (0) + "px";
+    bot.style.marginTop = (0) + "px";
 
     set_angle(angle);
 }
