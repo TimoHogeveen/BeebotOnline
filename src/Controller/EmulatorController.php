@@ -31,20 +31,11 @@ class EmulatorController extends AbstractController
         $id = $request->get('id');
         $matten = $matRepository->findBy(array('category' => $id));
         $dataresponse = array();
-
-        // foreach ($matten as $mat) {
-        //     $dataresponse .= 
-        // }
-
         $s = "";
-        //$u = "";
          foreach ($matten as $mat) {
              $s .= "<option value='".$mat->getImage()."'>". $mat->getName().' </option> ';
-             //$u .= $mat->getImage()." ";
                                     }
         return $response = new Response($s);
-        //return $responseURL = new Response($u);
-
     }
 
     

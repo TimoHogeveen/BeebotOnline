@@ -1,9 +1,4 @@
 buttons = ["fd", "bk", "lt", "rt", "go", "stop", "pause", "home"];
-// contains the JSON from mats/mats_list.js
-// mats = {};
-// the current mat
-// currentMat = null;
-
 timerID = 0;
 
 
@@ -30,20 +25,10 @@ document.addEventListener('DOMContentLoaded', function()
 	});
 	
 	// When the bot is clicked, its angle resets
-/*	document.getElementById("bot").addEventListener("click", function()
-	{
-		set_angle(currentMat ? currentMat.angle : 0);
-	});
-*/	
-
-	// The selection handler for the mats DDL (if present)
-	// (function() {
-	// 	if (select)
-	// 		select.addEventListener("change", function()
-	// 		{		
-	// 			select_mat(this.selectedIndex);
-	// 		});
-	// })();
+	// document.getElementById("bot").addEventListener("click", function()
+	// {
+	// 	set_angle(currentMat ? currentMat.angle : 0);
+	// });
 
 	// The Home handler
 	document.getElementById("home").addEventListener("click", function()
@@ -88,7 +73,6 @@ function setDropHandlers() {
 	});
 
 
-		//var playfield = document.getElementById(playground);
 		grid.addEventListener("dragover", function(evt)
 		{
 			evt.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
