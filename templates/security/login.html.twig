@@ -3,22 +3,22 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
+<form style="padding: 1%"; method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Je bent ingelogt als {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <h1 class="h3 mb-3 font-weight-normal">Inloggen</h1>
+    <label for="inputEmail">E-mail</label>
+    <input style="width: 20%;"type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+    <label for="inputPassword">Wachtwoord</label>
+    <input style="width: 20%;" type="password" name="password" id="inputPassword" class="form-control" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
@@ -34,7 +34,7 @@
             </label>
         </div>
     #}
-
+    <br>
     <button class="btn btn-lg btn-primary" type="submit">
         Sign in
     </button>
