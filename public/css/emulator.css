@@ -20,6 +20,12 @@ body {
   /* Dit staat er zo in om te zorgen dat de Beebot de playground niet meeneemt */
 }
 
+/* De grootte van de BeeBot */
+#bot {
+  height: 160px;
+  width: 160px;
+}
+
 /* Img waar de gekozen mat word ingeladen, position absolute zodat hij altijd linksbovenin staat. Z-index om te zorgend dat je de bot boven de mat hebt */
 
 #currentmat {
@@ -42,6 +48,7 @@ body {
     border-right: 5px solid rgb(0, 0, 0);
     overflow-x: hidden;
     padding-top: 20px;
+    background-color: rgb(226, 230, 36);
   }
   
   .sidenav a {
