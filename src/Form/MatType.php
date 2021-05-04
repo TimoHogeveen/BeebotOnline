@@ -39,6 +39,8 @@ class MatType extends AbstractType
                 ],
             ])
             ->add('category')
+            ->add('horizontalboxes')
+            ->add('verticalboxes')
         ;
     }
 

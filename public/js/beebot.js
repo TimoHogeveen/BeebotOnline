@@ -3,7 +3,7 @@ var bot, grid, margin;
 
 var botimg, dragimg = new Image();
 
-var units = 200; //Verander dit nummer om de afstand die de bot aflegt te veranderen
+var units = 200; //Verander dit nummer om de afstand die de bot aflegt te veranderen, dit heeft ook effect op de grootte van de matten!
 var angle = 0;
 // starting cell if given via query parameter
 var start = { x: 0, y: 0, angle: 0 }; //Deze word alleen gebruikt in de reset functie
@@ -35,8 +35,25 @@ function setup() {
 
 //Functie die de juiste mat inhaald
 document.getElementById('matbutton').onclick = function() {
+    var mat = document.getElementById('mat');
     var val = document.getElementById('mat').value; //Value is de URL in de huidige geselecteerde option
     src = 'uploads/images/' + val; //Maakt de juiste URL waar de mat is opgeslagen
+    
+    var horizontalboxes = mat.options[mat.selectedIndex].dataset.horizontal; //Omdat programmeren zo'n leuk vak is is dit de enige manier hoe ik dit kan uitlezen
+    var verticalboxes = mat.options[mat.selectedIndex].dataset.vertical;
+    // console.log("Horizontaale Vakken: " + horizontalboxes);
+    // console.log("Verticaale Vakken: " + verticalboxes);
+
+    var matwidth = 0; //Zorgt ervoor dat de volgende mat goed kan uitgerekend worden
+    var matheight = 0;
+
+    matwidth = horizontalboxes * units; //Aantal vakken keer de afstand die de Beebot aflegd
+    matheight = verticalboxes * units;
+
+    // console.log(matwidth);
+    // console.log(matheight);
+    currentmat.style.width = matwidth + "px";
+    currentmat.style.height = matheight + "px";
     currentmat.src = src; //Voegt de afbeelding toe aan de div in de playground
 }
 

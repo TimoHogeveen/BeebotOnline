@@ -33,7 +33,7 @@ class EmulatorController extends AbstractController
         $dataresponse = array();
         $s = "";
          foreach ($matten as $mat) {
-             $s .= "<option value='".$mat->getImage()."'>". $mat->getName().' </option> ';
+             $s .= "<option data-vertical='".$mat->getVerticalboxes()."'data-horizontal='".$mat->getHorizontalboxes()."'value='".$mat->getImage()."'>". $mat->getName().' </option> ';
                                     }
         return $response = new Response($s);
     }

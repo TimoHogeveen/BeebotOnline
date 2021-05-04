@@ -39,6 +39,16 @@ class Mat
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $horizontalboxes;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $verticalboxes;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +98,30 @@ class Mat
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getHorizontalboxes(): ?int
+    {
+        return $this->horizontalboxes;
+    }
+
+    public function setHorizontalboxes(int $horizontalboxes): self
+    {
+        $this->horizontalboxes = $horizontalboxes;
+
+        return $this;
+    }
+
+    public function getVerticalboxes(): ?int
+    {
+        return $this->verticalboxes;
+    }
+
+    public function setVerticalboxes(int $verticalboxes): self
+    {
+        $this->verticalboxes = $verticalboxes;
 
         return $this;
     }

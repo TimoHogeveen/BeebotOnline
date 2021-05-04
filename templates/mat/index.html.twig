@@ -12,6 +12,8 @@
                 <th>Naam</th>
                 <th>Afbeelding bestand naam</th>
                 <th>Toegevoegd door</th>
+                <th>Aantal vakken horizontaal</th>
+                <th>Aantal vakken verticaal</th>
                 <th>Opties</th>
             </tr>
         </thead>
@@ -22,6 +24,8 @@
                 <td>{{ mat.name }}</td>
                 <td>{{ mat.image }}</td>
                 <td>{{ mat.user }}</td>
+                <td>{{ mat.horizontalboxes }}</td>
+                <td>{{ mat.verticalboxes }}</td>
                 <td>
                     <a href="{{ path('mat_show', {'id': mat.id}) }}">Weergeven</a>
                     <a href="{{ path('mat_edit', {'id': mat.id}) }}">Bewerken</a>
