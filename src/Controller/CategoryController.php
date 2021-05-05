@@ -87,6 +87,13 @@ class CategoryController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($category);
             $entityManager->flush();
+
+
+            // For each mat in category unlink image??
+            // $file = $this->getParameter("images_directory") . '/' . $mat->getImage(); 
+            // if ($file) {
+            //    unlink($file); //Hier word de mat lokaal verwijderd
+
         }
 
         return $this->redirectToRoute('category_index');

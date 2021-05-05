@@ -29,7 +29,7 @@ class Mat
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="mats")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $category;
 
