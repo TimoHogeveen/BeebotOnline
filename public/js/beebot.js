@@ -154,10 +154,21 @@ function move(fd) {
         }
         if (x < 0) x = 0;
         if (y < 0) y = 0; //Als hij boven het scherm is...
-        if (x > (grid.clientWidth + 3 * margin / 2)) //Niet buiten het speelveeld
-            x = grid.clientWidth + 3 * margin / 2;
-        if (y > (grid.clientHeight + 3 * margin / 2)) //Niet buiten de playground aan onderkant
-            y = grid.clientHeight + 3 * margin / 2;
+
+        if (x > (grid.clientWidth + 3 * margin / 2)) {
+            console.log("Buiten speelveld rechterkant");
+            alert("De Bee-Bot is buiten het scherm gekomen! Klik op het huisje om de Bee-Bot terug te brengen.");        
+            stop();
+            //x = grid.clientWidth + 3 * margin / 2;
+        } //Niet buiten het speelveeld
+
+        if (y > (grid.clientHeight + 3 * margin / 2)) {
+           // y = grid.clientHeight + 3 * margin / 2;
+            alert("De Bee-Bot is buiten het scherm gekomen! Klik op het huisje om de Bee-Bot terug te brengen.");
+            stop();
+            console.log("Buiten speelveld onderkant");
+        } //Niet buiten de playground aan onderkant
+
         bot.style.marginLeft = x + "px";
         bot.style.marginTop = y + "px";
         console.log("Margin top", bot.style.marginTop);
