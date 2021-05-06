@@ -59,7 +59,6 @@ function setDropHandlers() {
 		var bot = this;
 		setTimeout(function() {
 			bot.style.visibility = "hidden";
-			console.log("Ik ben onzichtbaar");
 		}, 1);
 		return false;
 	});
@@ -68,7 +67,6 @@ function setDropHandlers() {
 		evt.preventDefault();
 		setTimeout(function() {
 			bot.style.visibility = "";
-			console.log("Ik ben zichtbaar");
 		}, 1);
 	});
 

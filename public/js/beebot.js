@@ -28,6 +28,7 @@ function setup() {
 
     var style = getComputedStyle(document.getElementById("playground"));
     margin = parseInt(style.paddingTop);
+    console.log(margin);
     set_angle(angle);
     setDropHandlers() //Dit zorgt ervoor dat de playground drag en droppable word
     enable_buttons(true);
@@ -59,16 +60,16 @@ document.getElementById('matbutton').onclick = function() {
 
 function set_angle(deg) {
     angle = deg;
-    var c = document.getElementById("bot"); //De Canvas
+    var canvas = document.getElementById("bot"); //De Canvas
     var w = Math.max(botimg.width, botimg.height); //Dit is dus het hoogste variable. Dus de hoogte of breedte van de bot afbeelding
-    c.width = c.height = w; //Dit maakt de canvas grootte/breedte hetzelfde als de bot afbeelding
-    var ctx = c.getContext("2d"); //Verteld het variable dat deze afbeelding(canvas) twee dimensies heeft
+    canvas.width = canvas.height = w; //Dit maakt de canvas grootte/breedte hetzelfde als de bot afbeelding
+    var ctx = canvas.getContext("2d"); //Verteld het variable dat deze afbeelding(canvas) twee dimensies heeft
     ctx.clearRect(0, 0, w, w); //Deze code maakt de canvas schoon (leeg)
     ctx.translate(w/2, w/2);
     ctx.rotate(angle * Math.PI / 180);
     ctx.translate(-w/2, -w/2);
     ctx.drawImage(botimg, 0, 0); //De afbeelding word in de canvas geladen
-    dragimg.src = c.toDataURL(); //???
+    dragimg.src = canvas.toDataURL(); //???
 }
 // Functie waar de instructies worden toegevoegd aan het commando scherm.
 function addCmd(what) {
