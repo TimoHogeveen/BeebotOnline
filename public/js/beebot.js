@@ -79,7 +79,7 @@ function addCmd(what) {
         return;
     }
     var img = document.createElement("img");
-    img.src = "/temp/go-" + what + ".png"; //Laat de juiste pijlen in op het commando scherm
+    img.src = "/images/go-" + what + ".png"; //Laat de juiste pijlen in op het commando scherm
     span.appendChild(img);
 }
 //Functie om het commando scherm leeg te maken
