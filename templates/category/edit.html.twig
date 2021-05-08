@@ -7,7 +7,7 @@
 
     {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('category_index') }}">Terug naar categorieën lijst</a>
-
     {{ include('category/_delete_form.html.twig') }}
+
+    <a style="margin:5px" class="btn btn-primary" href="{{ path('category_index') }}">Terug naar categorieën lijst</a>
 {% endblock %}

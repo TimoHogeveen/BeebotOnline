@@ -16,6 +16,7 @@
                 <th>Uniek ID</th>
                 <th>Naam Categorie</th>
                 <th>Opties</th>
+                <th> <a href="{{ path('category_new') }}" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Nieuwe Categorie</span></a></th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +25,10 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">Weergeven</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">Bewerken</a>
+                    <a class="btn btn-info" href="{{ path('category_show', {'id': category.id}) }}">Weergeven</a>
+                    <a class="btn btn-warning" href="{{ path('category_edit', {'id': category.id}) }}">Bewerken</a>
                 </td>
+                <td> </td>
             </tr>
         {% else %}
             <tr>
@@ -35,8 +37,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('category_new') }}">Nieuwe categorie toevoegen</a>
-    <a href="{{ path('mat_index') }}">Naar matten lijst</a>
-    <a href="{{ path('emulator') }}">Ga terug naar het spel</a>
+    <a class="btn btn-primary" href="{{ path('mat_index') }}">Naar matten lijst</a>
+    <a class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
 {% endblock %}

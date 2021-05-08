@@ -5,11 +5,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
+
+{# https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=crud-data-table-for-database-with-modal-form #}
+
 {% block title %}Lijst van matten{% endblock %}
 
 {% block body %}
     <h1>Lijst van matten</h1>
-
     <table class="table">
         <thead>
             <tr>
@@ -21,6 +23,7 @@
                 <th>Aantal vakken horizontaal</th>
                 <th>Aantal vakken verticaal</th>
                 <th>Opties</th>
+                <th> <a href="{{ path('mat_new') }}" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Nieuwe mat Toevoegen</span></a></th>
             </tr>
         </thead>
         <tbody>
@@ -34,9 +37,10 @@
                 <td>{{ mat.horizontalboxes }}</td>
                 <td>{{ mat.verticalboxes }}</td>
                 <td>
-                    <a href="{{ path('mat_show', {'id': mat.id}) }}">Weergeven</a>
-                    <a href="{{ path('mat_edit', {'id': mat.id}) }}">Bewerken</a>
+                    <a class="btn btn-info" href="{{ path('mat_show', {'id': mat.id}) }}">Weergeven</a>
+                    <a class="btn btn-warning" href="{{ path('mat_edit', {'id': mat.id}) }}">Bewerken</a>
                 </td>
+                <td> </td>
             </tr>
         {% else %}
             <tr>
@@ -45,8 +49,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('mat_new') }}">Nieuwe mat toevoegen</a>
-    <a href="{{ path('category_index') }}">Naar categorieën lijst</a>
-    <a href="{{ path('emulator') }}">Ga terug naar het spel</a>
+    <a class="btn btn-primary" href="{{ path('category_index') }}">Naar categorieën lijst</a>
+    <a class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
 {% endblock %}
