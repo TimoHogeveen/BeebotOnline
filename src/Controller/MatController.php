@@ -110,7 +110,7 @@ class MatController extends AbstractController
 
             return $this->redirectToRoute('mat_index');
         }
-
+        $form->remove('image'); //Zorgt ervoor dat de form geen image property heeft, images worden alleen verwijdert bij totale verwijdering van mat
         return $this->render('mat/edit.html.twig', [
             'mat' => $mat,
             'form' => $form->createView(),
