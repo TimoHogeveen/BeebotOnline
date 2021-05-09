@@ -56,7 +56,7 @@ document.getElementById('matbutton').onclick = function() {
     else if (verticalboxes < 1) {
         alert("Error! De grootte van deze mat klopt niet!")
         return;
-      }
+    }
 
     matwidth = horizontalboxes * units; //Aantal vakken keer de afstand die de Beebot aflegd
     matheight = verticalboxes * units;
