@@ -3,9 +3,11 @@
 {% block title %}Mat toevoegen{% endblock %}
 
 {% block body %}
+<div class="container-fluid">
     <h1>Mat toevoegen</h1>
 
     {{ include('mat/_form.html.twig') }}
 
     <a style="margin:5px" class="btn btn-primary" href="{{ path('mat_index') }}">Terug naar matten lijst</a>
+<div>
 {% endblock %}

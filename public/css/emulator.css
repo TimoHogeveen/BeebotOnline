@@ -76,7 +76,8 @@ body {
   .options {
     position: absolute;
     bottom: 10%;
-    left: 18%;
+    left: 10%;
+    border: 3px solid #73AD21;
   }
 
 /* Styling voor het commando centrum */
@@ -84,7 +85,7 @@ body {
 #commands {
 	margin-top: 20px;
 	border: 2px solid gray;
-	background-color: #3352ff;
+	background-color: #22f8ed;
 	padding: 5px;
 	max-width: 100%;
 	min-height: 36px;
