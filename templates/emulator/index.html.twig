@@ -73,6 +73,7 @@
 {% if is_granted('ROLE_ADMIN')%}
     <a href="{{ path('mat_index') }}">Naar matten lijst</a>
     <a href="{{ path('category_index') }}">Naar categoriën lijst</a>
+	<a href="{{ path('user_index') }}">Naar gebruiker lijst</a>
     <a href="{{ path('app_logout') }}">Uitloggen</a>
 {% else %}
 	{% if is_granted('ROLE_USER') %}
