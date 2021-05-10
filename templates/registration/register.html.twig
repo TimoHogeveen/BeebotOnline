@@ -1,24 +1,34 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Register{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block title %}Account aanmaken{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
-
+    <h1 style="margin:5px">Account aanmaken</h1>
+    <div style="margin:5px">
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
+        <br>
         {{ form_row(registrationForm.firstname) }}
+        <br>
         {{ form_row(registrationForm.lastname) }}
+        <br>
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
+        <br>
         {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
+        <br>
+        <button style="margin:5px" class="btn btn-primary"type="submit" class="btn">Register</button>
+        <a style="margin:5px" class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
     {{ form_end(registrationForm) }}
-    <a href="{{ path('emulator') }}">Ga terug naar het spel</a>
+    </div>
 {% endblock %}

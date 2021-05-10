@@ -25,7 +25,7 @@ class MatController extends AbstractController
      */
     public function index(MatRepository $matRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('mat/index.html.twig', [
             'mats' => $matRepository->findAll(),
         ]);
@@ -36,7 +36,7 @@ class MatController extends AbstractController
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $mat = new Mat();
         $form = $this->createForm(MatType::class, $mat);
         $form->handleRequest($request);
@@ -90,7 +90,7 @@ class MatController extends AbstractController
      */
     public function show(Mat $mat): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('mat/show.html.twig', [
             'mat' => $mat,
         ]);
@@ -101,7 +101,7 @@ class MatController extends AbstractController
      */
     public function edit(Request $request, Mat $mat): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(MatType::class, $mat);
         $form->handleRequest($request);
 
@@ -122,7 +122,7 @@ class MatController extends AbstractController
      */
     public function delete(Request $request, Mat $mat): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete'.$mat->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $file = $this->getParameter("images_directory") . '/' . $mat->getImage(); 

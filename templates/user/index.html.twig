@@ -5,39 +5,46 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
-{% block title %}Lijst van Categoriën{% endblock %}
+
+{% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>Lijst van Categoriën</h1>
+    <h1>User index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Uniek ID</th>
-                <th>Naam Categorie</th>
+                <th>Uniek Id</th>
+                <th>Email</th>
+                <th>Rollen</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
                 <th>Opties</th>
-                <th> <a href="{{ path('category_new') }}" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Nieuwe Categorie</span></a></th>
             </tr>
         </thead>
         <tbody>
-        {% for category in categories %}
+        {% for user in users %}
             <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ path('category_show', {'id': category.id}) }}">Weergeven</a>
-                    <a class="btn btn-warning" href="{{ path('category_edit', {'id': category.id}) }}">Bewerken</a>
+                    <a class="btn btn-info" href="{{ path('user_show', {'id': user.id}) }}">Weergeven</a>
+                    <a class="btn btn-warning" href="{{ path('user_edit', {'id': user.id}) }}">Bewerken</a>
                 </td>
-                <td> </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">Geen resultaten gevonden.</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    {# <a href="{{ path('user_new') }}">Create new</a> #}
     <a class="btn btn-primary" href="{{ path('mat_index') }}">Naar matten lijst</a>
-    <a class="btn btn-primary" href="{{ path('user_index') }}">Naar gebruikers lijst</a>
+    <a class="btn btn-primary" href="{{ path('category_index') }}">Naar categorieën lijst</a>
     <a class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
 {% endblock %}

@@ -70,14 +70,20 @@
   <input type="button" id="matbutton" value="Kies Mat" />
 </form>
 <div class="options">
-{% if app.user %}
+{% if is_granted('ROLE_ADMIN')%}
     <a href="{{ path('mat_index') }}">Naar matten lijst</a>
     <a href="{{ path('category_index') }}">Naar categoriën lijst</a>
     <a href="{{ path('app_logout') }}">Uitloggen</a>
- {% else %}
-    <a href="{{ path('app_login') }}">Inloggen</a>
+{% else %}
+	{% if is_granted('ROLE_USER') %}
+	 Welkom bij Living Lab bot {{ app.user.firstname }}!
+	 <a href="{{ path('app_logout') }}">Uitloggen</a>
+	{% else %}
+	<a href="{{ path('app_login') }}">Inloggen</a>
     <a href="{{ path('app_register') }}">Registreer</a>
- {% endif %}
+	{% endif %}
+{% endif %}
+
  </div>
 </div>
 
