@@ -35,7 +35,7 @@ class Mat
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="mats")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $user;
 
