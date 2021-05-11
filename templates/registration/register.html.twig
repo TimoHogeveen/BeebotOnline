@@ -17,17 +17,19 @@
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         <br>
-        {{ form_row(registrationForm.firstname) }}
+        {{ form_row(registrationForm.firstname, {
+            label: 'Voornaam'
+        }) }} 
         <br>
-        {{ form_row(registrationForm.lastname) }}
+        {{ form_row(registrationForm.lastname, {
+            label: 'Achternaam'
+        }) }} 
         <br>
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Wachtwoord'
         }) }}
         <br>
-        {{ form_row(registrationForm.agreeTerms) }}
-        <br>
-        <button style="margin:5px" class="btn btn-primary"type="submit" class="btn">Register</button>
+        <button style="margin:5px" class="btn btn-primary"type="submit" class="btn">Registreer</button>
         <a style="margin:5px" class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
     {{ form_end(registrationForm) }}
     </div>
