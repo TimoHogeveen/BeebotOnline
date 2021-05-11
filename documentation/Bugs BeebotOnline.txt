@@ -1,10 +1,15 @@
-Beebot online problemen
-
-
+Living Lab Bot online problemen
 
 De Beebot rijd rustig het speelveld uit aan de rechter/onderkant.
 Hoe reageert Beebot online op andere grootte schermen?
 
+
+
+
+Dingen die nog moeten
+
+
+Symfony error bij het laden van een pagina met de onjuiste permissions
 
 
 
