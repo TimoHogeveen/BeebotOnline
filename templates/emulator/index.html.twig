@@ -77,7 +77,7 @@
     <a href="{{ path('app_logout') }}">Uitloggen</a>
 {% else %}
 	{% if is_granted('ROLE_USER') %}
-	 Welkom bij Living Lab bot {{ app.user.firstname }}!
+	 <b>Welkom {{ app.user.firstname }}!</b>
 	 <a href="{{ path('app_logout') }}">Uitloggen</a>
 	{% else %}
 	<a href="{{ path('app_login') }}">Inloggen</a>
