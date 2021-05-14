@@ -10,7 +10,12 @@
 
 {% block body %}
     <h1>Lijst van gebruikers</h1>
-
+    <b style="margin:5px"> Welkom {{ app.user.firstname }} {{ app.user.lastname }}, hier kan je de accounts in het systeem aanpassen, pas op met wie je toegang geeft! Gebruikers met ROLE_ADMIN kunnen dingen aanpassen!</b>
+    <br>
+    <a style="margin:5px" class="btn btn-primary" href="{{ path('mat_index') }}">Naar matten lijst</a>
+    <a style="margin:5px" class="btn btn-primary" href="{{ path('category_index') }}">Naar categorieën lijst</a>
+    <a style="margin:5px" class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
+    <a style="margin:5px" class="btn btn-danger" href="{{ path('app_logout') }}">Uitloggen</a> 
     <table class="table">
         <thead>
             <tr>
@@ -42,9 +47,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    {# <a href="{{ path('user_new') }}">Create new</a> #}
-    <a class="btn btn-primary" href="{{ path('mat_index') }}">Naar matten lijst</a>
-    <a class="btn btn-primary" href="{{ path('category_index') }}">Naar categorieën lijst</a>
-    <a class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
 {% endblock %}
