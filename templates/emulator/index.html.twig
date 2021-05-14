@@ -54,7 +54,7 @@
 <form class="dropdowns" action="">
   <label for="category">Kies een categorie:</label>
   <select class="categorydropdown" name="category" id="category">
-  		<option disabled selected="selected"> Klik hier voor categoriën </option>
+  		<option disabled selected="selected"> Klik hier voor categorieën </option>
     {% for category in categories  %}
          <option value="{{ category.id }}">{{ category }}</option>
     {% endfor %}
@@ -73,7 +73,7 @@
 {% if is_granted('ROLE_ADMIN')%}
 	<b>Welkom {{ app.user.firstname }}!</b>
     <a href="{{ path('mat_index') }}">Naar matten lijst</a>
-    <a href="{{ path('category_index') }}">Naar categoriën lijst</a>
+    <a href="{{ path('category_index') }}">Naar categorieën lijst</a>
 	<a href="{{ path('user_index') }}">Naar gebruiker lijst</a>
     <a href="{{ path('app_logout') }}">Uitloggen</a>
 {% else %}
