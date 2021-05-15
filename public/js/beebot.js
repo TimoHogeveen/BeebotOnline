@@ -32,6 +32,7 @@ function setup() {
     set_angle(angle);
     setDropHandlers() //Dit zorgt ervoor dat de playground drag en droppable word
     enable_buttons(true);
+	home();
 }
 
 //Functie die de juiste mat inhaald
