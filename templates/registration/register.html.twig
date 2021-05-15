@@ -15,7 +15,9 @@
     <h1 style="margin:5px">Account aanmaken</h1>
     <div style="margin:5px">
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.email, {
+            label: 'E-Mail'
+        }) }}
         <br>
         {{ form_row(registrationForm.firstname, {
             label: 'Voornaam'
@@ -28,6 +30,8 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Wachtwoord'
         }) }}
+        <br>
+        <b style="font-size:small">Bij het aanmaken van een account ga je ermee akkoord dat je E-Mail en naam op de server word opgeslagen, een beheerder kan je account weer verwijderen op aanvraag.</b>
         <br>
         <button style="margin:5px" class="btn btn-primary"type="submit" class="btn">Registreer</button>
         <a style="margin:5px" class="btn btn-secondary" href="{{ path('emulator') }}">Ga terug naar het spel</a>
