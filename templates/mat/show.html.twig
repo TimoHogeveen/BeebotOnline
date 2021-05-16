@@ -20,6 +20,10 @@
                 <td>{{ mat.category }}</td>
             </tr>
             <tr>
+                <th>Toegevoegd door</th>
+                <td>{{ mat.user }}</td>
+            </tr>
+            <tr>
                 <th>Afbeelding bestand naam</th>
                 <td>{{ mat.image }}</td>
             </tr>
@@ -39,4 +43,7 @@
     {{ include('mat/_delete_form.html.twig') }}
 
     <a style="margin:5px" class="btn btn-primary" href="{{ path('mat_index') }}">Terug naar matten lijst</a>
+    <br>
+    <p style="margin:5px">Voorbeeld mat, deze mat ziet er groter uit in het spel.</p>
+    <img style="margin:5px" src="/uploads/images/{{ mat.image }}" alt="Error, mat kon niet geladen worden" width="20%" height="20%"> 
 {% endblock %}
