@@ -51,18 +51,6 @@ body {
     background-color: rgb(226, 230, 36);
   }
   
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #000000;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    color: #686868;
-  }
-
   .dropdowns{
     position: absolute;
     left: 18%;
@@ -70,15 +58,6 @@ body {
 
   .dropdowns label{
     font-weight: bold;
-  }
-
-
-  .options {
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-    border: 3px solid #73AD21;
-    text-align: center;
   }
 
 /* Styling voor het commando centrum */
@@ -109,6 +88,26 @@ body {
   overflow-x: hidden;
   padding-top: 20px;
   background-color: rgb(226, 230, 36);
+}
+
+.options {
+  bottom: 10%;
+  right: 10%;
+  position: absolute;
+  border: 3px solid #73AD21;
+  text-align: center;
+}
+
+.options a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #000000;
+  display: block;
+}
+
+.options a:hover {
+  color: #686868;
 }
 
 .textbox {
