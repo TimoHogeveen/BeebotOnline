@@ -2,6 +2,19 @@ body {
     background-color: white;
 }
 
+/* @media (max-width: 1000px) {
+  .right {
+    width: -50%;
+    height: -50%;
+    transform: scale(0, 0);
+  } */
+  /* #currentmat {
+    width: -50%;
+    height: -50%;
+    transform: scale(0, 0.5);
+  }
+} */
+
 /* Speelveld rechterkant */
 
 .right {
@@ -22,8 +35,8 @@ body {
 
 /* De grootte van de BeeBot */
 #bot {
-  height: 160px;
-  width: 160px;
+  height: 120px;
+  width: 120px;
 }
 
 /* Img waar de gekozen mat word ingeladen, position absolute zodat hij altijd linksbovenin staat. Z-index om te zorgend dat je de bot boven de mat hebt */

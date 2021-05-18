@@ -3,7 +3,7 @@ var bot, grid, margin;
 
 var botimg, dragimg = new Image();
 
-var units = 200; //Verander dit nummer om de afstand die de bot aflegt te veranderen, dit heeft ook effect op de grootte van de matten!
+var units = 150; //Verander dit nummer om de afstand die de bot aflegt te veranderen, dit heeft ook effect op de grootte van de matten!
 var angle = 0;
 // starting cell if given via query parameter
 var start = { x: 0, y: 0, angle: 0 }; //Deze word alleen gebruikt in de reset functie
