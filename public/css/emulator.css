@@ -63,7 +63,12 @@ body {
     padding-top: 20px;
     background-color: rgb(226, 230, 36);
   }
-  
+
+  /* input {
+    width: 40px;
+    height: 50px;
+  } */
+
   .dropdowns{
     position: absolute;
     left: 18%;
@@ -101,6 +106,14 @@ body {
   overflow-x: hidden;
   padding-top: 20px;
   background-color: rgb(226, 230, 36);
+}
+
+.infotext {
+  font-size: 12px;
+}
+
+.makeitmove {
+  text-align: center;
 }
 
 .options {
