@@ -16,35 +16,35 @@
 		<tbody>
       		<tr>
 				<td style="vertical-align:top; text-align:left">
-					<input id="home" type="image" class="button green" src="images/reset.png" width="80">
+					<input class"inputbutton" id="home" type="image"src="images/reset.png">
 				</td>
 				<td style="vertical-align:top; text-align:center">
-					<input id="fd" type="image" class="button orange" src="images/beebot-fd.png">
+					<input class"inputbutton" id="fd" type="image"src="images/beebot-fd.png">
 				</td>
 				<td style="vertical-align:top; text-align:right">
-					<input id="stop_run" type="image" class="button red" src="images/stop.png" disabled="disabled" width="80">
+					<input class"inputbutton" id="stop_run" type="image"src="images/stop.png" disabled="disabled">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input id="lt" type="image" class="button orange" src="images/beebot-lt.png">
+					<input class"inputbutton" id="lt" type="image"src="images/beebot-lt.png">
 				</td>
 				<td>
-					<input id="go" type="image" class="button ltgreen" src="images/beebot-go.png">
+					<input class"inputbutton" id="go" type="image"src="images/beebot-go.png">
 				</td>
 				<td>
-					<input id="rt" type="image" class="button orange" src="images/beebot-rt.png">
+					<input class"inputbutton" id="rt" type="image"src="images/beebot-rt.png">
 				</td>
 			</tr>
 			<tr>
 				<td style="vertical-align: bottom; text-align:left">
-					<input id="stop" type="image" class="button blue" src="images/beebot-stop.png">
+					<input class"inputbutton" id="stop" type="image"src="images/beebot-stop.png">
 				</td>
 				<td style="vertical-align:bottom; text-align:center">
-					<input id="bk" type="image" class="button orange" src="images/beebot-bk.png">
+					<input class"inputbutton" id="bk" type="image"src="images/beebot-bk.png">
 				</td>
 				<td style="vertical-align: bottom; text-align:right">
-					<input id="pause" type="image" class="button blue" src="images/beebot-pause.png">
+					<input class"inputbutton" id="pause" type="image"src="images/beebot-pause.png">
 				</td>
 			</tr>
 		</tbody>
@@ -74,9 +74,27 @@
 </div>
 <div class="creditmenu">
 <div class="textbox">
-<p>Welkom bij de Living Lab Bot! Je kan deze bot programmeren met de knoppen aan de linkerkant. 
-Je kan de bot oppakken met de linkermuisknop en wegslepen. Verder kan je de bot resetten met de knop die eruit ziet als een huis.
-Ten slotte kan je de bot stoppen tijdens het bewegen met de stopknop, veel plezier en vergeet niet een mat te kiezen aan de linkerkant!</p>
+<p class="infotext">Welkom op de Living Lab-versie van de Beebot. Oftewel, je kan de Beebot ook online programmeren met matten naar keuze.
+<br>
+<br>
+De Beebot kan geprogrammeerd worden met de knoppen op zijn rug zoals dat ook met een gewone Beebot kan. Op het scherm, 
+kun je de bot oppakken met de linkermuisknop en slepen naar zijn startplaats op de mat. 
+Verder kan de Beebot gereset worden met de huisje-button en je kan de Beebot laten stoppen met de stopbutton. 
+De beheerder van de site kan matten en categorieën toevoegen waarbij de mat de maximale grootte heeft van 5 x 5 hokjes.
+<br>
+<br>
+Veel plezier en vergeet niet een mat te kiezen aan de linkerkant.
+<br>
+<br>
+Deze Beebot-applicatie is gemaakt door Timo Hogeveen in het kader van zijn examen voor de opleiding applicatie- en media-ontwikkelaar in april-mei 2021.
+<br>
+<br>
+De examenopdracht is verstrekt door docenten van het project make it move_, 
+een samenwerkingsproject tussen het Friesland College Heerenveen, opleiding Onderwijsassistent en Pedagogisch Werk en basisscholenkoepel Comprix. 
+Studenten van de opleiding programmeren met leerlingen van de basisschool.</p>
+</div>
+<div class="makeitmove" >
+<img src="/images/MakeITMove.png">
 </div>
 <div class="options">
 {% if is_granted('ROLE_ADMIN')%}
