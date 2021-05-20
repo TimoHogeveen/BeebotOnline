@@ -5,7 +5,9 @@
 {% block body %}
 <div class="container-fluid">
     <h1>Mat toevoegen</h1>
-
+    <b>Zorg dat de afbeelding van de mat alleen de mat zelf bevat! Als de afbeelding groter is dan alleen de mat zelf(denk aan text aan de onderkant) zal de
+    grootte in het spel niet kloppen!</b>
+    <br>
     {{ include('mat/_form.html.twig') }}
 
     <a style="margin:5px" class="btn btn-primary" href="{{ path('mat_index') }}">Terug naar matten lijst</a>
