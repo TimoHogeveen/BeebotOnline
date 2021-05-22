@@ -95,15 +95,6 @@ body {
 
 /* Styling voor menu rechterkant */
 
-#resizer {
-  height: 36px;
-  width: 36px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
-}
-
 .creditmenu {
   height: 100%;
   width: 20%;

@@ -68,23 +68,27 @@ document.getElementById('matbutton').onclick = function() {
 
 //Deze functie is speciaal voor deze met kleine schermen. Hij verstopt het optie menu aan de rechterkant. Je kan hem gelukkig wel
 //weer terughalen hoor! Ook word het speelveld groter gemaakt. Size 0 staat voor zichtbaar, size 1 staat voor onzichtbaar
-document.getElementById('resizer').onclick = function() {
-    var infomenu = document.getElementById("infomenu");
-    var resizer = document.getElementById("resizer");
-    if (size == 0) {
-        infomenu.style.visibility = "hidden";
-        size = 1;
-        grid.style.width = "80%"; //Maakt het speelveld voor de bot groter
-        resizer.src = "/images/expandsmall.png";
-        return;
-    }
-    else if (size == 1) {
-        infomenu.style.visibility = "visible";
-        size = 0;
-        grid.style.width = "60%"; //Maakt het speelveld voor de bot weer kleiner.
-        resizer.src = "/images/shrinksmall.png";
-    }
-}
+//
+//Beste toekomstige programmeur, ik kreeg deze niet af. Safari is vervelend. Ik wens je veel success
+// document.getElementById('resizer').onclick = function() {
+//     var infomenu = document.getElementById("infomenu");
+//     var resizer = document.getElementById("resizer");
+//     if (size == 0) {
+//         infomenu.style.display = "none";
+//         //infomenu.style.width = "0%";
+//         size = 1;
+//         grid.style.width = "80%"; //Maakt het speelveld voor de bot groter
+//         resizer.value = "Breng het optiemenu terug";
+//         return;
+//     }
+//     else if (size == 1) {
+//         infomenu.style.display = "block";
+//         //infomenu.style.width = "20%";
+//         size = 0;
+//         grid.style.width = "60%"; //Maakt het speelveld voor de bot weer kleiner.
+//         resizer.value = "Vergroot het speelveld";
+//     }
+// }
 
 function set_angle(deg) {
     angle = deg;
