@@ -4,10 +4,11 @@ var bot, grid, margin;
 var botimg, dragimg = new Image();
 
 var units = 150; //Verander dit nummer om de afstand die de bot aflegt te veranderen, dit heeft ook effect op de grootte van de matten! Zorg ervoor dat de afbeelding dus daarbij past
-var angle = 0;
+var angle = 0; //Dit word gebruikt om de draai van de Bee-Bot te gebruiken 
 // starting cell if given via query parameter
 var start = { x: 0, y: 0, angle: 0 }; //Deze word alleen gebruikt in de reset functie
 var grid; //Variable voor de playground
+var size = 0; //Grote for optiescherm aan rechterkant. 0 is actief, 1 is inactief(verborgen). Dit kon een boolean zijn maar dat deed ik lekker niet
 
 function setup() {
     botimg = document.getElementById("botimg");
@@ -63,6 +64,26 @@ document.getElementById('matbutton').onclick = function() {
     currentmat.style.width = matwidth + "px"; //Zorgt dat de afbeelding(mat) de juiste grootte krijgt in pixels
     currentmat.style.height = matheight + "px"; //Zorgt dat de afbeelding(mat) de juiste grootte krijgt in pixels
     currentmat.src = src; //Voegt de afbeelding toe aan de div in de playground
+}
+
+//Deze functie is speciaal voor deze met kleine schermen. Hij verstopt het optie menu aan de rechterkant. Je kan hem gelukkig wel
+//weer terughalen hoor! Ook word het speelveld groter gemaakt. Size 0 staat voor zichtbaar, size 1 staat voor onzichtbaar
+document.getElementById('resizer').onclick = function() {
+    var infomenu = document.getElementById("infomenu");
+    var resizer = document.getElementById("resizer");
+    if (size == 0) {
+        infomenu.style.visibility = "hidden";
+        size = 1;
+        grid.style.width = "80%"; //Maakt het speelveld voor de bot groter
+        resizer.src = "/images/expandsmall.png";
+        return;
+    }
+    else if (size == 1) {
+        infomenu.style.visibility = "visible";
+        size = 0;
+        grid.style.width = "60%"; //Maakt het speelveld voor de bot weer kleiner.
+        resizer.src = "/images/shrinksmall.png";
+    }
 }
 
 function set_angle(deg) {

@@ -95,6 +95,15 @@ body {
 
 /* Styling voor menu rechterkant */
 
+#resizer {
+  height: 36px;
+  width: 36px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
 .creditmenu {
   height: 100%;
   width: 20%;
@@ -150,7 +159,6 @@ body {
 	left: 0px;
 	top: 0px;
 } */
-
 
   .main {
     margin-left: 160px; /* Same as the width of the sidenav */
