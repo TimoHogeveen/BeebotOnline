@@ -103,7 +103,7 @@ body {
   top: 0;
   right: 0;
   border-left: 5px solid rgb(0, 0, 0);
-  overflow: hidden;
+  overflow: auto;
   padding-top: 20px;
   background-color: rgb(226, 230, 36);
 }
@@ -122,9 +122,12 @@ body {
 
 .options {
   bottom: 0;
-  width: 100%;
+  width: 20%;
+  right: 0;
+  z-index: 2;
   position: absolute;
   border-top: 3px solid #000000;
+  border-left: 5px solid #000000;
   text-align: center;
   background-color: rgb(230, 201, 36);
 }

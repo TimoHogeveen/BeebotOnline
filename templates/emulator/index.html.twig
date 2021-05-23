@@ -75,28 +75,34 @@
 </form>
 </div>
 <div class="creditmenu" id="infomenu">
-<div class="textbox">
-<p class="infotext">Welkom op de Living Lab-versie van de Beebot. Oftewel, je kan de Beebot ook online programmeren met matten naar keuze.
-<br>
-<br>
-De Beebot kan geprogrammeerd worden met de knoppen op zijn rug zoals dat ook met een gewone Beebot kan. Op het scherm, 
-kun je de bot oppakken met de linkermuisknop en slepen naar zijn startplaats op de mat. 
-Verder kan de Beebot gereset worden met de huisje-button en je kan de Beebot laten stoppen met de stopbutton. 
-De beheerder van de site kan matten en categorieën toevoegen waarbij de mat de maximale grootte heeft van 5 x 5 hokjes.
-<br>
-<br>
-Veel plezier en vergeet niet een mat te kiezen aan de linkerkant.
-<br>
-<br>
-Deze Beebot-applicatie is gemaakt door Timo Hogeveen in het kader van zijn examen voor de opleiding applicatie- en media-ontwikkelaar in april-mei 2021.
-<br>
-<br>
-De examenopdracht is verstrekt door docenten van het project make it move_, 
-een samenwerkingsproject tussen het Friesland College Heerenveen, opleiding Onderwijsassistent en Pedagogisch Werk en basisscholenkoepel Comprix. 
-Studenten van de opleiding programmeren met leerlingen van de basisschool.</p>
-</div>
+	<div class="textbox">
+	<p class="infotext">Welkom op de Living Lab-versie van de Beebot. Oftewel, je kan de Beebot ook online programmeren met matten naar keuze.
+	<br>
+	<br>
+	De Beebot kan geprogrammeerd worden met de knoppen op zijn rug zoals dat ook met een gewone Beebot kan. Op het scherm, 
+	kun je de bot oppakken met de linkermuisknop en slepen naar zijn startplaats op de mat. 
+	Verder kan de Beebot gereset worden met de huisje-button en je kan de Beebot laten stoppen met de stopbutton. 
+	De beheerder van de site kan matten en categorieën toevoegen waarbij de mat de maximale grootte heeft van 5 x 5 hokjes.
+	<br>
+	<br>
+	Veel plezier en vergeet niet een mat te kiezen aan de linkerkant.
+	<br>
+	<br>
+	Deze Beebot-applicatie is gemaakt door Timo Hogeveen in het kader van zijn examen voor de opleiding applicatie- en media-ontwikkelaar in april-mei 2021.
+	<br>
+	<br>
+	De examenopdracht is verstrekt door docenten van het project make it move_, 
+	een samenwerkingsproject tussen het Friesland College Heerenveen, opleiding Onderwijsassistent en Pedagogisch Werk en basisscholenkoepel Comprix. 
+	Studenten van de opleiding programmeren met leerlingen van de basisschool.</p>
+	</div>
 <div class="makeitmove" >
-<img src="/images/MakeITMove.png">
+	<img src="/images/MakeITMove.png">
+	<br>
+	<br>
+	<br>
+	<br>
+</div>
+
 </div>
 <div class="options">
 {% if is_granted('ROLE_ADMIN')%}
@@ -114,10 +120,7 @@ Studenten van de opleiding programmeren met leerlingen van de basisschool.</p>
     <a href="{{ path('app_register') }}">Registreer</a>
 	{% endif %}
 {% endif %}
-
  </div>
-</div>
-
 <div class="right">
 <div id="playground">
 <canvas id="bot" draggable="true" style="display: block;"></canvas>
