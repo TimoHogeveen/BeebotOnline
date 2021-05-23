@@ -93,6 +93,10 @@ body {
 	padding: 5px;
 }
 
+#infobutton {
+  display: none;
+}
+
 /* Styling voor menu rechterkant */
 
 .creditmenu {
@@ -106,6 +110,26 @@ body {
   overflow: auto;
   padding-top: 20px;
   background-color: rgb(226, 230, 36);
+}
+
+/* Responsive design voor infobox. Het speelveld is groter voor mensen met een klein scherm */
+
+@media all and (max-width: 1250px) {
+  .creditmenu {
+    display: none;
+  }
+
+  #playground {
+    width: 80%;
+  }
+
+  #infobutton {
+    display: block;
+    position: absolute;
+    bottom: 3%
+  }
+  
+  
 }
 
 .textbox {
@@ -126,7 +150,7 @@ body {
   right: 0;
   z-index: 2;
   position: absolute;
-  border-top: 3px solid #000000;
+  border-top: 5px solid #000000;
   border-left: 5px solid #000000;
   text-align: center;
   background-color: rgb(230, 201, 36);

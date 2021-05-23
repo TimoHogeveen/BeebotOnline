@@ -61,22 +61,25 @@
     {% endfor %}
 
   </select>
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
   <label for="mat">Kies een mat:</label>
   <select class="mattendropdown" name="mat" id="mat">
   <option disabled selected="selected"> Kies eerst een categorie! </option>
   </select>
   <br><br>
   <input type="button" id="matbutton" value="Kies Mat" />
-  <br><br>
+  <br>
+  <br>
+  <br>
+    <input type="button" id="infobutton" value="Informatie" />
 	{# <input type="button" id="resizer" value="Vergroot het speelveld" /> #}
 </form>
 </div>
 <div class="creditmenu" id="infomenu">
 	<div class="textbox">
-	<p class="infotext">Welkom op de Living Lab-versie van de Beebot. Oftewel, je kan de Beebot ook online programmeren met matten naar keuze.
+	<p id="infotext" class="infotext">Welkom op de Living Lab-versie van de Beebot. Oftewel, je kan de Beebot ook online programmeren met matten naar keuze.
 	<br>
 	<br>
 	De Beebot kan geprogrammeerd worden met de knoppen op zijn rug zoals dat ook met een gewone Beebot kan. Op het scherm, 

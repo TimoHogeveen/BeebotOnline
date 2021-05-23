@@ -90,6 +90,11 @@ document.getElementById('matbutton').onclick = function() {
 //     }
 // }
 
+document.getElementById('infobutton').onclick = function() {
+    var text = document.getElementById("infotext").textContent;
+    alert(text);
+}
+
 function set_angle(deg) {
     angle = deg;
     var canvas = document.getElementById("bot"); //De Canvas
