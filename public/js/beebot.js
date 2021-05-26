@@ -66,30 +66,6 @@ document.getElementById('matbutton').onclick = function() {
     currentmat.src = src; //Voegt de afbeelding toe aan de div in de playground
 }
 
-//Deze functie is speciaal voor deze met kleine schermen. Hij verstopt het optie menu aan de rechterkant. Je kan hem gelukkig wel
-//weer terughalen hoor! Ook word het speelveld groter gemaakt. Size 0 staat voor zichtbaar, size 1 staat voor onzichtbaar
-//
-//Beste toekomstige programmeur, ik kreeg deze niet af. Safari is vervelend. Ik wens je veel success
-// document.getElementById('resizer').onclick = function() {
-//     var infomenu = document.getElementById("infomenu");
-//     var resizer = document.getElementById("resizer");
-//     if (size == 0) {
-//         infomenu.style.display = "none";
-//         //infomenu.style.width = "0%";
-//         size = 1;
-//         grid.style.width = "80%"; //Maakt het speelveld voor de bot groter
-//         resizer.value = "Breng het optiemenu terug";
-//         return;
-//     }
-//     else if (size == 1) {
-//         infomenu.style.display = "block";
-//         //infomenu.style.width = "20%";
-//         size = 0;
-//         grid.style.width = "60%"; //Maakt het speelveld voor de bot weer kleiner.
-//         resizer.value = "Vergroot het speelveld";
-//     }
-// }
-
 document.getElementById('infobutton').onclick = function() {
     var text = document.getElementById("infotext").textContent;
     alert(text);

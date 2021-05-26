@@ -42,7 +42,7 @@ function setDropHandlers() {
 	// drag and drop handlers
 	document.getElementById("bot").addEventListener("dragstart", function(DragEvent)
 	{
-		var offset = { x: DragEvent.offsetX, y: DragEvent.offsetY }; //Offset is dragevent + offsetx & Y
+		var offset = { x: DragEvent.offsetX, y: DragEvent.offsetY }; //Offset is de afstand van de muis naar linksbovenin
 		var TransferedData = DragEvent.dataTransfer;
 		if (TransferedData.setDragImage)
 		TransferedData.setDragImage(dragimg, offset.x, offset.y);
@@ -79,3 +79,9 @@ function setDropHandlers() {
 		});
 	
 }
+
+
+
+
+
+
