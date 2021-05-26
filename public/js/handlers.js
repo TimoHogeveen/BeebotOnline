@@ -19,17 +19,11 @@ document.addEventListener('DOMContentLoaded', function()
 			case 'bk': //Achteruit
 			case 'lt': //Links draai
 			case 'rt':	addCmd(this.id); break;
-			case 'go':	run(); break; //Rechtsdraai
+			case 'go':	run(); break; //Rijden
 			case 'stop': clear(); break; //Stop
 		}
 	});
 	
-	// When the bot is clicked, its angle resets
-	// document.getElementById("bot").addEventListener("click", function()
-	// {
-	// 	set_angle(currentMat ? currentMat.angle : 0);
-	// });
-
 	// The Home handler
 	document.getElementById("home").addEventListener("click", function()
 	{
@@ -46,43 +40,42 @@ document.addEventListener('DOMContentLoaded', function()
 
 function setDropHandlers() {
 	// drag and drop handlers
-	document.getElementById("bot").addEventListener("dragstart", function(evt)
+	document.getElementById("bot").addEventListener("dragstart", function(DragEvent)
 	{
-		var offset = { x: evt.offsetX, y: evt.offsetY };
-		var dt = evt.dataTransfer;
-		if (dt.setDragImage)
-			dt.setDragImage(dragimg, offset.x, offset.y);
+		var offset = { x: DragEvent.offsetX, y: DragEvent.offsetY }; //Offset is dragevent + offsetx & Y
+		var TransferedData = DragEvent.dataTransfer;
+		if (TransferedData.setDragImage)
+		TransferedData.setDragImage(dragimg, offset.x, offset.y);
 		// click offset is the drag data
-		dt.setData("text", JSON.stringify(offset));
-		dt.effectAllowed = "move";
-		dt.dropEffect = "move";
+		TransferedData.setData("text", JSON.stringify(offset));
+		TransferedData.effectAllowed = "move";
+		TransferedData.dropEffect = "move";
 		var bot = this;
 		setTimeout(function() {
 			bot.style.visibility = "hidden";
 		}, 1);
 		return false;
 	});
-	document.getElementById("bot").addEventListener("dragend", function(evt)
+	document.getElementById("bot").addEventListener("dragend", function(DragEvent)
 	{
-		evt.preventDefault();
+		DragEvent.preventDefault();
 		setTimeout(function() {
 			bot.style.visibility = "";
 		}, 1);
 	});
 
 
-		grid.addEventListener("dragover", function(evt)
+		document.addEventListener("dragover", function(DragEvent)
 		{
-			evt.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
-			console.log("Je sleept boven de playground!")
+			DragEvent.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
 		});
 		
-		grid.addEventListener("drop", function(evt)
+		document.addEventListener("drop", function(DragEvent)
 		{
-			evt.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
-			var pos = JSON.parse(evt.dataTransfer.getData("text"));
-			bot.style.marginLeft = (evt.layerX - pos.x) + "px";
-			bot.style.marginTop = (evt.layerY - pos.y) + "px";
+			DragEvent.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+			var pos = JSON.parse(DragEvent.dataTransfer.getData("text"));
+			bot.style.marginLeft = (DragEvent.layerX - pos.x) + "px";
+			bot.style.marginTop = (DragEvent.layerY - pos.y) + "px";
 		});
 	
 }
