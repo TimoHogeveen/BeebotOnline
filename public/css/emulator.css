@@ -39,6 +39,10 @@ body {
   width: 120px;
 }
 
+#bot:hover {
+  cursor: move;
+}
+
 /* Img waar de gekozen mat word ingeladen, position absolute zodat hij altijd linksbovenin staat. Z-index om te zorgend dat je de bot boven de mat hebt */
 
 #currentmat {
