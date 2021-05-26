@@ -30,7 +30,7 @@ function setup() {
     var style = getComputedStyle(document.getElementById("playground"));
     margin = parseInt(style.paddingTop);
     set_angle(angle); //Zorgt ervoor dat de Bot de juiste kant opkijkt bij het inladen.
-    setDropHandlers() //Dit zorgt ervoor dat de playground drag en droppable word
+    //setDropHandlers() //Dit zorgt ervoor dat de playground drag en droppable word
     enable_buttons(true); //Zorgt ervoor dat de knoppen weer bruikbaar zijn.
     setTimeout(function(){home();}, 500) //Zorgt ervoor dat de bot sowieso opnieuw getekend word, dit ging fout op de webstite.
 }

@@ -38,50 +38,70 @@ document.addEventListener('DOMContentLoaded', function()
 	
 });
 
-function setDropHandlers() {
-	// drag and drop handlers
-	document.getElementById("bot").addEventListener("dragstart", function(DragEvent)
-	{
-		var offset = { x: DragEvent.offsetX, y: DragEvent.offsetY }; //Offset is de afstand van de muis naar linksbovenin
-		var TransferedData = DragEvent.dataTransfer;
-		if (TransferedData.setDragImage)
-		TransferedData.setDragImage(dragimg, offset.x, offset.y);
-		// click offset is the drag data
-		TransferedData.setData("text", JSON.stringify(offset));
-		TransferedData.effectAllowed = "move";
-		TransferedData.dropEffect = "move";
-		var bot = this;
-		setTimeout(function() {
-			bot.style.visibility = "hidden";
-		}, 1);
-		return false;
-	});
-	document.getElementById("bot").addEventListener("dragend", function(DragEvent)
-	{
-		DragEvent.preventDefault();
-		setTimeout(function() {
-			bot.style.visibility = "";
-		}, 1);
-	});
+// function setDropHandlers() {
+// 	// drag and drop handlers
+// 	document.getElementById("bot").addEventListener("dragstart", function(DragEvent)
+// 	{
+// 		var offset = { x: DragEvent.offsetX, y: DragEvent.offsetY }; //Offset is de afstand van de muis naar linksbovenin
+// 		var TransferedData = DragEvent.dataTransfer;
+// 		if (TransferedData.setDragImage)
+// 		TransferedData.setDragImage(dragimg, offset.x, offset.y);
+// 		// click offset is the drag data
+// 		TransferedData.setData("text", JSON.stringify(offset));
+// 		TransferedData.effectAllowed = "move";
+// 		TransferedData.dropEffect = "move";
+// 		var bot = this;
+// 		setTimeout(function() {
+// 			bot.style.visibility = "hidden";
+// 		}, 1);
+// 		return false;
+// 	});
+// 	document.getElementById("bot").addEventListener("dragend", function(DragEvent)
+// 	{
+// 		DragEvent.preventDefault();
+// 		setTimeout(function() {
+// 			bot.style.visibility = "";
+// 		}, 1);
+// 	});
 
 
-		document.addEventListener("dragover", function(DragEvent)
-		{
-			DragEvent.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
-		});
+// 		document.addEventListener("dragover", function(DragEvent)
+// 		{
+// 			DragEvent.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+// 		});
 		
-		document.addEventListener("drop", function(DragEvent)
-		{
-			DragEvent.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
-			var pos = JSON.parse(DragEvent.dataTransfer.getData("text"));
-			bot.style.marginLeft = (DragEvent.layerX - pos.x) + "px";
-			bot.style.marginTop = (DragEvent.layerY - pos.y) + "px";
-		});
+// 		document.addEventListener("drop", function(DragEvent)
+// 		{
+// 			DragEvent.preventDefault(); //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
+// 			var pos = JSON.parse(DragEvent.dataTransfer.getData("text"));
+// 			bot.style.marginLeft = (DragEvent.layerX - pos.x) + "px";
+// 			bot.style.marginTop = (DragEvent.layerY - pos.y) + "px";
+// 		});
 	
-}
+// }
 
+// https://css-tricks.com/forums/topic/cursor-position-on-draggable-element/
 
+$('canvas').on('mousedown', function (e) {
+    
+    var $this = $(this);
 
+    $this.addClass('active');
+    
+    var oTop = e.pageY - $('.active').offset().top;
+    var oLeft = e.pageX - $('.active').offset().left;
+    $(this).parents().on('mousemove', function (e) {
+		$('.active').css("margin-top", e.pageY - oTop);
+		$('.active').css("margin-left", e.pageX - oLeft - document.getElementById("sidemenu").clientWidth);
+    });
+    
+    $('body').on('mouseup', function () {
 
+        $this.removeClass('active');
+        $('body').unbind('mouseup');
 
+    });
+    
+    return false;    
+});
 
