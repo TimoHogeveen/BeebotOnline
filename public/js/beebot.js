@@ -268,3 +268,23 @@ function home() {
     bot.style.marginTop = (0) + "px"; //Update de locatie voor de bot
     set_angle(angle); //Update de bot angle in het spel naar de start positie
 }
+
+//Deze functie word uitgevoert aan het einde van de sleep actie in handlers.js. Zorgt ervoor dat de bot altijd in de grid word gezet zelfs als
+//hij hier buiten word gespleept.
+function CheckBorder() {
+    var x = bot.offsetLeft; //Waar de bot dus op begin staat
+    var y = bot.style.marginTop.replace('px', ''); //Pakt de huidige marginTop, en haalt de pixels erbij weg. Replace niet nodig!!
+
+    if (x < 0) x = 0; //Stopt dat de Beebot links uit het scherm gaat
+    if (y < 0) y = 0; //Stopt dat de Beebot bovenaan het scherm uitgaat
+
+    if (x > (grid.clientWidth + 3 * margin / 2 - bot.width)) { //Functie word uitgevoerd als beebot aan de rechterkant het speelveld uitrijd
+        x = grid.clientWidth + 3 * margin / 2 - bot.width; //Stopt dat de Beebot rechts uit het scherm rijd
+    }
+
+    if (y > (grid.clientHeight + 3 * margin / 2 - bot.height)) { //Functie word uitgevoerd als beebot aan de onderkant het speelveld uitrijd
+        y = grid.clientHeight + 3 * margin / 2 - bot.height; //Stopt dat de Beebot onder uit het scherm rijd
+    }
+    bot.style.marginLeft = x + "px";
+    bot.style.marginTop = y + "px";
+}

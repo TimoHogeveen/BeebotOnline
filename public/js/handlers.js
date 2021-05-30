@@ -58,7 +58,7 @@ $('canvas').on('mousedown', function (e) {
 
         $this.removeClass('active');
         $('body').unbind('mouseup');
-
+		CheckBorder(); //Voert een functie uit waar gekeken word of de bot buiten het speelveld staat, zoja word hij teruggezet in het speelveld.
     });
     
     return false;    
